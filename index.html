@@ -691,13 +691,12 @@ if("IntersectionObserver" in window){
       if(e.isIntersecting){
         links.forEach(function(a){a.removeAttribute("aria-current")});
         var a=links.filter(function(l){return l.getAttribute("href")==="#"+e.target.id})[0];
-        if(a){a.setAttribute("aria-current","true");a.scrollIntoView({block:"nearest",inline:"nearest"})}
+        if(a){a.setAttribute("aria-current","true");}
       }
     });
   },{rootMargin:"-45% 0px -50% 0px"});
   links.forEach(function(a){var t=$(a.getAttribute("href"));if(t)io.observe(t)});
 }
-
 /* ---------- hero: line vs circle ---------- */
 var NS="http://www.w3.org/2000/svg";
 function el(n,a,p){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e}

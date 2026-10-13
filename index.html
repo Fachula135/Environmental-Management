@@ -160,6 +160,25 @@ fieldset.q legend{font-family:var(--font-head);font-weight:600;font-size:1.25rem
 .who{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0}
 .who span{background:var(--band);border-radius:999px;padding:.4em 1em;font-weight:700}
 .think{border-left:6px solid var(--accent);padding:6px 0 6px 16px;font-weight:700;max-width:60ch}
+.ocean{margin:20px 0;border:1px solid var(--line);border-radius:20px;padding:16px;background:var(--bg)}
+.ocean input[type=range]{width:100%;accent-color:var(--leaf);min-height:44px}
+.ocean svg{width:100%;height:auto;display:block;border-radius:14px}
+.ocean .sky{fill:var(--band)}
+.ocean .sea{fill:color-mix(in srgb,var(--accent) 30%,var(--surface))}
+.ocean .deepw{fill:var(--ink);transition:opacity .6s}
+.ocean .algae{fill:var(--leaf);transition:opacity .6s}
+.ocean .floor{fill:var(--ink-soft);opacity:.55}
+.ocean .hull,.ocean .mast{fill:var(--ink)}
+.ocean .net{stroke:var(--ink);fill:none;stroke-width:2}
+.ocean .fish,.ocean .crab{transition:opacity .8s}
+.ocean .fish > g{transition:transform 1.2s}
+.ocean .gone{opacity:0}
+.ocean-stats{display:flex;flex-wrap:wrap;gap:6px 28px;margin:12px 0;font-weight:500}
+.sea-grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));margin:18px 0}
+.sea-grid > div{border-left:6px solid var(--accent);padding:4px 0 4px 16px}
+.sea-grid > div.waste{border-left-color:var(--red)}
+.sea-grid h4{font-family:var(--font-head);font-weight:600;margin:0 0 6px;font-size:1.1rem}
+.sea-grid p{margin:0}
 
 /* pattern */
 .pat{display:grid;gap:16px}
@@ -407,7 +426,7 @@ footer li{margin-bottom:6px}
 <section id="quiz" class="band-blue">
   <div class="wrap">
     <h2>Quick quiz</h2>
-    <p class="lead">Four questions. You get an answer straight away.</p>
+    <p class="lead">Five questions. You get an answer straight away.</p>
     <div class="panel">
       <div id="quizBox"></div>
       <div class="row">
@@ -434,7 +453,38 @@ footer li{margin-bottom:6px}
       <p>Scientists have documented more than 400 "dead zones" along the world's coasts, where the water has too little oxygen for sea life. Fertilizer runoff from farms is a leading cause (Diaz and Rosenberg, 2008).</p>
       <ol class="steps" id="runoff" aria-live="polite"></ol>
       <button class="btn" type="button" id="runoffBtn">Follow the fertilizer</button>
-      <div class="who" aria-label="Who is affected"><span>Rivers and seas</span><span>Rural communities using untreated local water</span></div>
+      <div class="who" aria-label="Who is affected"><span>Rivers and seas</span><span>Fish and seabed animals</span><span>People who live from the sea</span><span>Rural communities using untreated local water</span></div>
+      <h3 style="margin-top:32px">Under the surface: the ocean and fishing</h3>
+      <p>All that runoff ends up in the sea. In <em>Laudato Si'</em> (paragraphs 40 and 41) Pope Francis reminds us that the oceans hold most of the planet's variety of life, that marine life feeds a great part of the world's population, and that pollution reaching the sea is turning parts of it into underwater cemeteries. Drag the slider and watch what happens.</p>
+      <div class="ocean">
+        <label for="fert" style="font-weight:700">How much fertilizer reaches the sea: <span id="fertVal">0%</span></label>
+        <input type="range" id="fert" min="0" max="100" value="0" step="1">
+        <svg id="oceanSvg" viewBox="0 0 600 300" role="img" aria-label="A fishing boat above the sea. As more fertilizer reaches the sea, algae grow at the surface, the water loses oxygen, and the fish and seabed animals disappear.">
+          <rect class="sky" x="0" y="0" width="600" height="62"/>
+          <rect class="sea" x="0" y="62" width="600" height="238"/>
+          <rect id="deep" class="deepw" x="0" y="150" width="600" height="150" style="opacity:0"/>
+          <rect id="algae" class="algae" x="0" y="62" width="600" height="24" style="opacity:0"/>
+          <rect class="floor" x="0" y="270" width="600" height="30"/>
+          <g id="crabG"></g>
+          <g id="fishG"></g>
+          <rect class="mast" x="92" y="6" width="4" height="36"/>
+          <path class="hull" d="M40 40 H150 L136 64 H56 Z"/>
+          <path class="net" d="M150 44 Q205 62 235 118"/>
+          <path class="net" d="M218 112 Q236 150 254 112 Z"/>
+        </svg>
+        <div class="ocean-stats">
+          <span>Fish left near the boat: <strong id="netCount">6</strong> of 6</span>
+          <span>Oxygen near the seabed: <strong id="o2">High</strong></span>
+        </div>
+        <p class="reveal" id="oceanText" style="font-size:1.15rem" aria-live="polite"></p>
+        <p class="small">An illustration of the idea, not real measurements.</p>
+      </div>
+      <div class="sea-grid">
+        <div><h4>Pollution from land</h4><p>Fertilizer runoff makes dead zones. The people who cause it are far from the coast, and the people who feel it live next to the sea.</p></div>
+        <div class="waste"><h4>Throwaway culture at sea</h4><p>The encyclical also warns that some fishing methods throw away much of what they catch, and that uncontrolled fishing can drastically deplete certain species.</p></div>
+        <div><h4>The tiny things matter</h4><p>Plankton is easy to overlook, yet the fish we eat ultimately depend on it. Damage the base of the food chain and everything above it suffers.</p></div>
+      </div>
+      <p class="think">Who loses first when the fish disappear: the company that sold the fertilizer, or the family that lives from the catch?</p>
       <p class="think">Producers keep the profit. Who pays for the damage downstream?</p>
     </div>
 
@@ -678,7 +728,7 @@ var caps={
   loop:"The circle: things are repaired, reused and recycled. Nothing is waste, because it comes back as something new."
 };
 function setModel(m){
-  $("#lineG").hidden=(m!=="line");$("#loopG").hidden=(m!=="loop");
+  $("#lineG").toggleAttribute("hidden",m!=="line");$("#loopG").toggleAttribute("hidden",m!=="loop");
   $("#btnLine").setAttribute("aria-pressed",m==="line");$("#btnLoop").setAttribute("aria-pressed",m==="loop");
   $("#beltCaption").textContent=caps[m];
 }
@@ -803,7 +853,8 @@ var quiz=[
   {q:"Which one describes the throwaway culture?",o:["Take, make, use and throw away","Repair, reuse and recycle","Only use things that are free"],a:0,e:"Yes. It is a straight line that ends in the bin, while nature works in circles."},
   {q:"What does integral ecology say?",o:["Each problem is separate and needs its own expert","Climate, nature, people and justice are all connected","Only governments can protect the environment"],a:1,e:"Right. You cannot fix one part without looking at the others."},
   {q:"What does ecological debt mean?",o:["Wealthier countries owe poorer ones, because they use and pollute more","Poorer countries owe money for using fertilizers","Every country owes the same amount"],a:0,e:"Correct. Poorer countries suffer a lot of the damage but caused less of it."},
-  {q:"According to Pope Francis, what does \"dominion\" in Genesis mean?",o:["Using nature however we want","Caring for creation, like a gardener","Leaving nature completely alone"],a:1,e:"Yes. \"Till and keep\" means to look after creation."}
+  {q:"According to Pope Francis, what does \"dominion\" in Genesis mean?",o:["Using nature however we want","Caring for creation, like a gardener","Leaving nature completely alone"],a:1,e:"Yes. \"Till and keep\" means to look after creation."},
+  {q:"Why do dead zones kill sea life?",o:["The water gets too hot in summer","Fertilizer feeds algae, and when the algae rot the water loses oxygen","Fishing boats scare the fish away"],a:1,e:"Yes. Too much fertilizer leads to too much algae, and that leads to too little oxygen."}
 ];
 var answered={};
 function renderQuiz(){
@@ -879,6 +930,47 @@ $("#runoffBtn").addEventListener("click",function(){
   ol.appendChild(li);rn++;
   b.textContent=rn>=run.length?"Start again":"Next step";
 });
+
+/* ---------- ocean ---------- */
+(function(){
+  var fishG=$("#fishG"),crabG=$("#crabG");
+  var fishDef=[{x:110,y:112,t:92},{x:290,y:135,t:85},{x:455,y:108,t:78},{x:190,y:195,t:60},{x:370,y:215,t:45},{x:490,y:182,t:30}];
+  var crabDef=[{x:150,y:268,t:25},{x:420,y:268,t:40}];
+  var fish=fishDef.map(function(d,i){
+    var g=el("g",{"class":"fish",transform:"translate("+d.x+" "+d.y+")"},fishG);
+    var inner=el("g",{},g);
+    el("path",{d:"M0 0 Q14 -11 30 0 Q14 11 0 0 Z M30 0 L42 -9 L42 9 Z",fill:"#FFCF33"},inner);
+    el("circle",{cx:8,cy:-2,r:2,fill:"#10302A"},inner);
+    return {g:g,inner:inner,d:d,dir:i%2?1:-1};
+  });
+  var crabs=crabDef.map(function(d){
+    var g=el("g",{"class":"crab",transform:"translate("+d.x+" "+d.y+")"},crabG);
+    el("ellipse",{cx:0,cy:0,rx:15,ry:9,fill:"#C8372D"},g);
+    el("circle",{cx:-17,cy:-8,r:5,fill:"#C8372D"},g);
+    el("circle",{cx:17,cy:-8,r:5,fill:"#C8372D"},g);
+    el("circle",{cx:-5,cy:-3,r:1.8,fill:"#fff"},g);
+    el("circle",{cx:5,cy:-3,r:1.8,fill:"#fff"},g);
+    return {g:g,d:d};
+  });
+  function upd(v){
+    $("#fertVal").textContent=v+"%";
+    $("#algae").style.opacity=Math.min(0.85,v/100*1.1).toFixed(2);
+    $("#deep").style.opacity=(v/100*0.5).toFixed(2);
+    var n=0;
+    fish.forEach(function(f){
+      var gone=v>f.d.t;
+      f.g.setAttribute("class",gone?"fish gone":"fish");
+      f.inner.style.transform=gone?"translateX("+(f.dir*160)+"px)":"none";
+      if(!gone)n++;
+    });
+    crabs.forEach(function(c){c.g.setAttribute("class",v>c.d.t?"crab gone":"crab")});
+    $("#netCount").textContent=n;
+    $("#o2").textContent=v<30?"High":v<60?"Falling":v<85?"Very low":"Almost none";
+    $("#oceanText").textContent=v<25?"Healthy water: plenty of oxygen from the surface to the seabed, and plenty of fish.":v<60?"Algae start to bloom at the surface. When they die and rot, they use up the oxygen deeper down. Animals on the seabed go first, because they cannot swim away.":v<85?"The oxygen is very low. Fish leave the area and the catch gets smaller.":"A dead zone: too little oxygen for most sea life. The boat comes back with an almost empty net.";
+  }
+  $("#fert").addEventListener("input",function(){upd(+this.value)});
+  upd(0);
+})();
 
 /* ---------- pattern ---------- */
 var pats=[

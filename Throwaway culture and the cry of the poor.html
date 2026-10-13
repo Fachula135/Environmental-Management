@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>What happens when we throw everything away? Throwaway culture and the cry of the poor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Figtree:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#EEF3EE; --surface:#FFFFFF; --ink:#10302A; --ink-soft:#40605A; --line:#C6D6CD;
+  --accent:#2B50E6; --accent-ink:#FFFFFF; --sun:#FFCF33; --leaf:#1F8A5B; --red:#C8372D;
+  --band:#DCEADF; --band-blue:#E0E7FF; --deep:#0F2D27; --deep-ink:#F1F7F4;
+  --shadow:0 1px 0 rgba(16,48,42,.06), 0 8px 24px rgba(16,48,42,.08);
+  --font-head:"Bricolage Grotesque","Trebuchet MS",system-ui,sans-serif;
+  --font-body:"Figtree",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0C1A17; --surface:#132622; --ink:#E8F2EE; --ink-soft:#A9C2B9; --line:#2B463E;
+    --accent:#8AA1FF; --accent-ink:#0C1A17; --sun:#FFD84D; --leaf:#4CCB8E; --red:#FF8576;
+    --band:#10231E; --band-blue:#141F40; --deep:#050D0B; --deep-ink:#E8F2EE;
+    --shadow:0 1px 0 rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.35);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0C1A17; --surface:#132622; --ink:#E8F2EE; --ink-soft:#A9C2B9; --line:#2B463E;
+  --accent:#8AA1FF; --accent-ink:#0C1A17; --sun:#FFD84D; --leaf:#4CCB8E; --red:#FF8576;
+  --band:#10231E; --band-blue:#141F40; --deep:#050D0B; --deep-ink:#E8F2EE;
+  --shadow:0 1px 0 rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.35);
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 76px);-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:1.0625rem;line-height:1.6}
+h1,h2,h3{font-family:var(--font-head);line-height:1.1;margin:0 0 .5em;letter-spacing:-.01em}
+h1{font-size:clamp(2.4rem,6.4vw,4.6rem);font-weight:800}
+h2{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800}
+h3{font-size:1.3rem;font-weight:600}
+p{margin:0 0 1em;max-width:62ch}
+a{color:var(--accent)}
+img,svg{max-width:100%}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:6px}
+[hidden]{display:none!important}
+.wrap{width:min(1080px,100%);margin-inline:auto;padding-inline:clamp(16px,4vw,40px)}
+section{padding-block:clamp(48px,8vw,96px)}
+.band{background:var(--band)}
+.band-blue{background:var(--band-blue)}
+.lead{font-size:1.2rem;color:var(--ink-soft)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* header */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:16px;min-height:56px}
+.brand{font-family:var(--font-head);font-weight:800;font-size:1.05rem;white-space:nowrap}
+.nav{display:flex;gap:4px;overflow-x:auto;flex:1;scrollbar-width:none}
+.nav::-webkit-scrollbar{display:none}
+.nav a{color:var(--ink);text-decoration:none;padding:8px 12px;border-radius:999px;font-weight:500;white-space:nowrap;font-size:.95rem}
+.nav a:hover{background:var(--band)}
+.nav a[aria-current="true"]{background:var(--ink);color:var(--bg)}
+.progress{height:3px;background:transparent}
+.progress i{display:block;height:100%;width:100%;background:var(--accent);transform:scaleX(0);transform-origin:left}
+.icon-btn{border:1px solid var(--line);background:var(--surface);color:var(--ink);width:40px;height:40px;border-radius:999px;cursor:pointer;font-size:1.1rem;flex:none}
+
+/* buttons & controls */
+.btn{font:inherit;font-weight:700;border:2px solid var(--accent);background:var(--accent);color:var(--accent-ink);padding:.7em 1.3em;border-radius:999px;cursor:pointer;min-height:44px}
+.btn.ghost{background:transparent;color:var(--accent)}
+.btn:hover{filter:brightness(1.08)}
+.seg{display:inline-flex;border:2px solid var(--ink);border-radius:999px;overflow:hidden;background:var(--surface)}
+.seg button{font:inherit;font-weight:700;border:0;background:transparent;color:var(--ink);padding:.65em 1.3em;cursor:pointer;min-height:44px}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+
+/* panels */
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:clamp(18px,3vw,32px);box-shadow:var(--shadow)}
+.grid{display:grid;gap:20px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr))}
+.g4{grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr))}
+.scroll-x{overflow-x:auto}
+
+/* hero */
+.hero{padding-block:clamp(32px,6vw,72px) clamp(40px,6vw,72px)}
+.hero-grid{display:grid;gap:32px;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));align-items:center}
+.hero h1 span{display:block}
+.belt-box{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:16px;box-shadow:var(--shadow)}
+.belt-box svg{width:100%;height:auto;display:block}
+.belt-caption{min-height:3.2em;margin:12px 4px 12px;color:var(--ink-soft)}
+.svg-text{font-family:var(--font-body);font-weight:700;font-size:15px;fill:var(--ink)}
+.svg-soft{fill:var(--ink-soft);font-weight:500}
+
+/* hook */
+.hook-opts{display:flex;flex-wrap:wrap;gap:12px;margin:20px 0}
+.hook-opts button{font:inherit;font-weight:700;border:2px solid var(--ink);background:var(--surface);color:var(--ink);padding:.8em 1.4em;border-radius:999px;cursor:pointer;min-height:44px}
+.hook-opts button[aria-pressed="true"]{background:var(--sun);border-color:var(--sun);color:#10302A}
+.reveal{border-left:6px solid var(--sun);padding:8px 0 8px 20px;font-family:var(--font-head);font-size:1.5rem;font-weight:600;max-width:34ch}
+
+/* hypothesis */
+.hyp{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))}
+.hyp .panel strong{display:block;font-family:var(--font-head);font-size:1.15rem;margin-bottom:6px}
+.pill{display:inline-block;background:var(--sun);color:#10302A;font-weight:700;border-radius:999px;padding:.2em .8em;margin-bottom:10px}
+
+/* concept cards */
+.concept{background:var(--surface);border:2px solid var(--ink);border-radius:20px;padding:0;overflow:hidden;text-align:left}
+.concept > button{width:100%;font:inherit;text-align:left;border:0;background:transparent;color:var(--ink);padding:20px;cursor:pointer;display:block}
+.concept h3{margin-bottom:.25em}
+.concept .tap{color:var(--accent);font-weight:700}
+.concept .def{padding:0 20px 20px;color:var(--ink)}
+.concept[data-open="true"]{border-color:var(--accent)}
+.glyph{width:56px;height:56px;margin-bottom:10px}
+
+/* games */
+.game{margin-top:28px}
+.chips,.slots{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0}
+.chip{font:inherit;font-weight:700;border:2px solid var(--ink);background:var(--surface);color:var(--ink);border-radius:999px;padding:.55em 1.1em;cursor:pointer;min-height:44px}
+.chip[disabled]{opacity:.35;cursor:default}
+.slot{min-width:120px;min-height:44px;border:2px dashed var(--line);border-radius:999px;display:flex;align-items:center;justify-content:center;padding:.4em 1em;color:var(--ink-soft);font-weight:500}
+.slot.filled{border:2px solid var(--leaf);color:var(--ink);font-weight:700;background:var(--surface)}
+.msg{min-height:1.6em;font-weight:500}
+.msg.good{color:var(--leaf)} .msg.bad{color:var(--red)}
+.web-wrap{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));align-items:center}
+.web-node{cursor:pointer}
+.web-node circle{fill:var(--surface);stroke:var(--ink);stroke-width:2.5;transition:fill .2s}
+.web-node text{font-family:var(--font-body);font-weight:700;font-size:14px;fill:var(--ink);pointer-events:none}
+.web-node[aria-pressed="true"] circle{fill:var(--sun);stroke:var(--ink)}
+.web-node[aria-pressed="true"] text{fill:#10302A}
+.web-line{stroke:var(--line);stroke-width:2}
+.web-line.on{stroke:var(--accent);stroke-width:3.5}
+.scale-svg .beam{transform-origin:300px 70px;transition:transform .7s cubic-bezier(.3,1.4,.5,1)}
+.scale-svg .pan{transition:transform .7s cubic-bezier(.3,1.4,.5,1)}
+
+/* quiz */
+fieldset.q{border:0;margin:0 0 28px;padding:0}
+fieldset.q legend{font-family:var(--font-head);font-weight:600;font-size:1.25rem;padding:0;margin-bottom:10px}
+.opt{display:flex;gap:10px;align-items:flex-start;border:2px solid var(--line);border-radius:14px;padding:12px 14px;margin-bottom:8px;cursor:pointer;background:var(--surface)}
+.opt:has(input:checked){border-color:var(--accent)}
+.opt.right{border-color:var(--leaf);background:color-mix(in srgb,var(--leaf) 14%,var(--surface))}
+.opt.wrong{border-color:var(--red)}
+.opt input{margin-top:.35em;accent-color:var(--accent)}
+.fb{min-height:1.5em;margin:6px 0 0;font-weight:500}
+
+/* tabs & cases */
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.tab{font:inherit;font-weight:700;border:2px solid var(--ink);background:var(--surface);color:var(--ink);border-radius:999px;padding:.6em 1.2em;cursor:pointer;min-height:44px}
+.tab[aria-selected="true"]{background:var(--ink);color:var(--bg)}
+.big{font-family:var(--font-head);font-weight:800;font-size:clamp(3.2rem,9vw,6rem);line-height:1;color:var(--accent)}
+.big small{font-size:.35em;font-weight:600;color:var(--ink-soft);margin-left:.2em}
+.steps{list-style:none;padding:0;margin:16px 0}
+.steps li{display:flex;gap:14px;align-items:flex-start;padding:12px 0;border-top:1px solid var(--line)}
+.steps li:last-child{border-bottom:1px solid var(--line)}
+.steps .dot{flex:none;width:36px;height:36px;border-radius:50%;background:var(--sun);color:#10302A;display:grid;place-items:center;font-weight:800}
+.bars{display:grid;gap:14px;margin:16px 0}
+.bar-row{display:grid;grid-template-columns:5.5rem 1fr;gap:12px;align-items:center}
+.bar-track{background:var(--band);border-radius:10px;height:38px;overflow:hidden;position:relative}
+.bar-fill{height:100%;border-radius:10px;background:var(--accent);width:0;transition:width 1.1s cubic-bezier(.2,.8,.2,1);display:flex;align-items:center;justify-content:flex-end;padding-right:10px;color:var(--accent-ink);font-weight:700;white-space:nowrap}
+.bar-fill.green{background:var(--leaf);color:#06231a}
+.bar-fill.sm{justify-content:flex-start;padding-left:10px;padding-right:0}
+.who{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0}
+.who span{background:var(--band);border-radius:999px;padding:.4em 1em;font-weight:700}
+.think{border-left:6px solid var(--accent);padding:6px 0 6px 16px;font-weight:700;max-width:60ch}
+
+/* pattern */
+.pat{display:grid;gap:16px}
+.pat > div{background:var(--surface);border:1px solid var(--line);border-radius:20px;overflow:hidden}
+.pat button.ph{width:100%;font:inherit;font-family:var(--font-head);font-weight:600;font-size:1.3rem;text-align:left;border:0;background:transparent;color:var(--ink);padding:18px 22px;cursor:pointer;display:flex;justify-content:space-between;gap:12px}
+.pat ul{margin:0;padding:0 22px 18px 42px}
+.pat li{margin-bottom:6px}
+
+/* conclusion */
+.vs{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))}
+.vs .yes{border-top:8px solid var(--leaf)}
+.vs .no{border-top:8px solid var(--red)}
+.pledge{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));margin-top:14px}
+
+/* final */
+.final{background:var(--deep);color:var(--deep-ink);text-align:center;padding-block:clamp(72px,14vw,160px)}
+.final blockquote{margin:0 auto;max-width:18ch;font-family:var(--font-head);font-weight:800;font-size:clamp(2.2rem,6.5vw,4.8rem);line-height:1.05}
+.final p{margin:24px auto 0;color:#B8CFC6}
+
+/* feedback */
+table{border-collapse:collapse;width:100%;min-width:560px}
+th,td{padding:10px 8px;text-align:center;border-bottom:1px solid var(--line)}
+th:first-child,td:first-child{text-align:left;padding-left:0}
+td input{width:22px;height:22px;accent-color:var(--accent)}
+textarea,input[type="text"]{width:100%;font:inherit;color:var(--ink);background:var(--surface);border:2px solid var(--line);border-radius:10px;padding:10px 12px}
+textarea{min-height:90px;resize:vertical}
+.vote-row{display:grid;grid-template-columns:minmax(120px,1.2fr) 2fr auto;gap:12px;align-items:center;margin-bottom:10px}
+.vote-row button{font:inherit;font-weight:700;border:2px solid var(--ink);background:var(--surface);color:var(--ink);border-radius:999px;padding:.5em 1em;cursor:pointer;text-align:left;min-height:44px}
+.vote-row .bar-track{height:26px}
+.vote-row .n{font-weight:800;min-width:2ch;text-align:right}
+.small{font-size:.92rem;color:var(--ink-soft)}
+.out{white-space:pre-wrap;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.88rem;background:var(--band);border-radius:12px;padding:14px;margin:14px 0 0;max-height:320px;overflow:auto}
+.row{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:16px}
+
+footer{padding-block:48px;border-top:1px solid var(--line)}
+footer ul{padding-left:1.1em;margin:0;color:var(--ink-soft);font-size:.92rem}
+footer li{margin-bottom:6px}
+
+@media (max-width:640px){
+  .brand{display:none}
+  .vote-row{grid-template-columns:1fr auto}
+  .vote-row .bar-track{grid-column:1 / -1;order:3}
+  .bar-row{grid-template-columns:1fr}
+}
+@media print{
+  .top,.hero,#concepts,#quiz,#cases,#pattern,#conclusion,.final,#feedback,footer{display:none!important}
+  #teacher{padding:0}
+  body{background:#fff;color:#000}
+}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *{transition-duration:.01ms!important}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <span class="brand">Throwaway culture</span>
+    <nav class="nav" aria-label="Sections">
+      <a href="#intro">The question</a>
+      <a href="#concepts">Four ideas</a>
+      <a href="#quiz">Quick quiz</a>
+      <a href="#cases">Three cases</a>
+      <a href="#pattern">The pattern</a>
+      <a href="#conclusion">What now?</a>
+      <a href="#feedback">Your turn</a>
+      <a href="#teacher">Teacher</a>
+    </nav>
+    <button class="icon-btn" id="themeBtn" type="button" aria-label="Switch light or dark theme" title="Switch theme">◐</button>
+  </div>
+  <div class="progress" aria-hidden="true"><i id="bar"></i></div>
+</header>
+
+<main>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <h1><span>What happens when we throw everything away?</span></h1>
+      <p class="lead">Throwaway culture and the cry of the poor. A project on <em>Laudato Si'</em> by Demian, Rafael, Galo and Facundo, Los Caminos. IGCSE Environmental Management.</p>
+      <p>Press the button on the right. Same things, two different journeys.</p>
+      <a class="btn" href="#intro">Start the presentation</a>
+    </div>
+    <div class="belt-box">
+      <svg id="belt" viewBox="0 0 720 340" role="img" aria-labelledby="beltTitle beltDesc">
+        <title id="beltTitle">A line compared with a circle</title>
+        <desc id="beltDesc">Objects travel along a straight line to a landfill, or around a circle where they are repaired, reused and recycled.</desc>
+        <g id="lineG">
+          <rect x="40" y="162" width="500" height="12" rx="6" fill="var(--line)"/>
+          <path id="linePath" d="M40 150 H520 Q560 150 560 190 V262" fill="none" stroke="none"/>
+          <text class="svg-text" x="90" y="112" text-anchor="middle">Take</text>
+          <text class="svg-text" x="240" y="112" text-anchor="middle">Make</text>
+          <text class="svg-text" x="390" y="112" text-anchor="middle">Use</text>
+          <text class="svg-text" x="545" y="112" text-anchor="middle" style="fill:var(--red)">Throw away</text>
+          <path d="M515 232 H605 V300 Q605 312 593 312 H527 Q515 312 515 300 Z" fill="var(--ink)" opacity=".9"/>
+          <text class="svg-text" x="560" y="296" text-anchor="middle" style="fill:var(--bg)">Landfill</text>
+          <g id="lineItems"></g>
+        </g>
+        <g id="loopG" hidden>
+          <circle cx="360" cy="170" r="110" fill="none" stroke="var(--line)" stroke-width="12"/>
+          <path id="loopPath" d="M360 60 A110 110 0 1 1 360 280 A110 110 0 1 1 360 60 Z" fill="none" stroke="none"/>
+          <text class="svg-text" x="360" y="36" text-anchor="middle">Make</text>
+          <text class="svg-text" x="486" y="175" text-anchor="start">Use</text>
+          <text class="svg-text" x="360" y="318" text-anchor="middle" style="fill:var(--leaf)">Repair, reuse, recycle</text>
+          <text class="svg-text" x="234" y="175" text-anchor="end">Collect</text>
+          <g id="loopItems"></g>
+        </g>
+      </svg>
+      <p class="belt-caption" id="beltCaption" aria-live="polite">The line: take, make, use, throw away. The waste has nowhere to go but the landfill.</p>
+      <div class="seg" role="group" aria-label="Choose the model">
+        <button type="button" id="btnLine" aria-pressed="true">The line</button>
+        <button type="button" id="btnLoop" aria-pressed="false">The circle</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOOK + QUESTION -->
+<section id="intro" class="band">
+  <div class="wrap">
+    <h2>How many things did you throw away today?</h2>
+    <div class="hook-opts" role="group" aria-label="Pick your answer">
+      <button type="button" data-hook="a" aria-pressed="false">0 to 2</button>
+      <button type="button" data-hook="b" aria-pressed="false">3 to 5</button>
+      <button type="button" data-hook="c" aria-pressed="false">More than 5</button>
+    </div>
+    <p class="reveal" id="hookReveal" aria-live="polite">Pick one. Then ask yourself: where did it all go, and who pays for it?</p>
+
+    <div style="height:48px"></div>
+    <h2>What is this project about?</h2>
+    <p class="lead">In 2015 Pope Francis wrote <em>Laudato Si'</em>, a letter about caring for our common home. It is written for <strong>everyone</strong>, not only Catholics.</p>
+    <div class="hyp">
+      <div class="panel"><span class="pill">Our question</span><strong>Can technology and markets alone fix environmental problems?</strong>Pollution, waste and climate change are often taught as technical problems. We wanted to test that idea.</div>
+      <div class="panel"><span class="pill">Our hypothesis</span><strong>No.</strong>Lasting solutions also need us to face global inequality and to replace the throwaway culture with a circular economy that looks after people and nature.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONCEPTS -->
+<section id="concepts">
+  <div class="wrap">
+    <h2>Four ideas that explain everything</h2>
+    <p class="lead">Tap a card to find out what it means. Then try the activities below.</p>
+    <div class="grid g4" id="conceptGrid">
+      <div class="concept" data-open="false">
+        <button type="button" aria-expanded="false">
+          <svg class="glyph" viewBox="0 0 56 56" aria-hidden="true"><path d="M6 40 H38 M30 30 L40 40 L30 50" fill="none" stroke="var(--red)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="14" cy="20" r="8" fill="var(--sun)"/></svg>
+          <h3>Throwaway culture</h3><span class="tap">Tap to open</span>
+        </button>
+        <div class="def" hidden>We take, make, use and throw away. Nature works in a circle where waste becomes food for something else. Our economy works in a line. And sometimes we throw away people too, like workers and communities who are treated as if they do not matter.</div>
+      </div>
+      <div class="concept" data-open="false">
+        <button type="button" aria-expanded="false">
+          <svg class="glyph" viewBox="0 0 56 56" aria-hidden="true"><g stroke="var(--ink)" stroke-width="3"><line x1="12" y1="14" x2="44" y2="18"/><line x1="12" y1="14" x2="28" y2="46"/><line x1="44" y1="18" x2="28" y2="46"/></g><circle cx="12" cy="14" r="7" fill="var(--leaf)"/><circle cx="44" cy="18" r="7" fill="var(--accent)"/><circle cx="28" cy="46" r="7" fill="var(--sun)"/></svg>
+          <h3>Integral ecology</h3><span class="tap">Tap to open</span>
+        </button>
+        <div class="def" hidden>Everything is closely connected: the climate, animals and plants, people, and justice. You cannot fix one without looking at the others.</div>
+      </div>
+      <div class="concept" data-open="false">
+        <button type="button" aria-expanded="false">
+          <svg class="glyph" viewBox="0 0 56 56" aria-hidden="true"><line x1="28" y1="8" x2="28" y2="48" stroke="var(--ink)" stroke-width="4"/><line x1="8" y1="20" x2="48" y2="14" stroke="var(--ink)" stroke-width="4" stroke-linecap="round"/><rect x="14" y="48" width="28" height="5" rx="2.5" fill="var(--ink)"/><circle cx="8" cy="30" r="6" fill="var(--red)"/><circle cx="48" cy="22" r="6" fill="var(--leaf)"/></svg>
+          <h3>Ecological debt</h3><span class="tap">Tap to open</span>
+        </button>
+        <div class="def" hidden>Wealthier countries use far more resources and release far more pollution. Because of that, Pope Francis says they owe a debt to poorer countries, which suffer the damage but caused less of it.</div>
+      </div>
+      <div class="concept" data-open="false">
+        <button type="button" aria-expanded="false">
+          <svg class="glyph" viewBox="0 0 56 56" aria-hidden="true"><path d="M28 50 V26" stroke="var(--leaf)" stroke-width="4" stroke-linecap="round"/><path d="M28 30 C14 30 10 20 10 12 C20 12 28 16 28 30 Z" fill="var(--leaf)"/><path d="M28 26 C38 26 44 20 46 10 C36 10 28 14 28 26 Z" fill="var(--sun)"/></svg>
+          <h3>Caring for creation</h3><span class="tap">Tap to open</span>
+        </button>
+        <div class="def" hidden>The book of Genesis says humans should "till and keep" the Earth. Pope Francis explains that "dominion" does not mean using nature however we like. It means looking after it, like a gardener.</div>
+      </div>
+    </div>
+
+    <!-- Order game -->
+    <div class="panel game" id="orderGame">
+      <h3>Game 1: Put the line in order</h3>
+      <p>Tap the steps in the order that happens in a throwaway economy.</p>
+      <div class="slots" id="slots" aria-label="Your order"></div>
+      <div class="chips" id="chips"></div>
+      <p class="msg" id="orderMsg" aria-live="polite"></p>
+      <button class="btn ghost" type="button" id="orderReset">Shuffle and try again</button>
+    </div>
+
+    <!-- Web -->
+    <div class="panel game">
+      <h3>Game 2: Everything is connected</h3>
+      <p>Tap a circle to see how it connects to the others.</p>
+      <div class="web-wrap">
+        <svg id="web" viewBox="0 0 400 360" role="group" aria-label="Network of five connected ideas"></svg>
+        <p class="reveal" id="webText" style="font-size:1.2rem" aria-live="polite">Pick a circle.</p>
+      </div>
+    </div>
+
+    <!-- Scale -->
+    <div class="panel game">
+      <h3>Game 3: The unbalanced scale</h3>
+      <div class="seg" role="group" aria-label="Choose a question" style="margin-bottom:12px">
+        <button type="button" data-scale="pollute" aria-pressed="false">Who pollutes more?</button>
+        <button type="button" data-scale="harm" aria-pressed="false">Who is hurt more?</button>
+      </div>
+      <div class="web-wrap">
+        <svg class="scale-svg" viewBox="0 0 600 280" role="img" aria-label="A scale comparing wealthier and poorer countries">
+          <rect x="270" y="250" width="60" height="12" rx="6" fill="var(--ink)"/>
+          <rect x="296" y="70" width="8" height="184" fill="var(--ink)"/>
+          <g class="beam" id="beam">
+            <rect x="150" y="66" width="300" height="8" rx="4" fill="var(--ink)"/>
+          </g>
+          <g class="pan" id="panL" style="transform:translateY(0)">
+            <line x1="150" y1="70" x2="105" y2="150" stroke="var(--ink)" stroke-width="3"/>
+            <line x1="150" y1="70" x2="195" y2="150" stroke="var(--ink)" stroke-width="3"/>
+            <path d="M85 150 H215 Q205 190 150 190 Q95 190 85 150 Z" fill="var(--red)"/>
+            <text class="svg-text" x="150" y="224" text-anchor="middle">Wealthier countries</text>
+          </g>
+          <g class="pan" id="panR" style="transform:translateY(0)">
+            <line x1="450" y1="70" x2="405" y2="150" stroke="var(--ink)" stroke-width="3"/>
+            <line x1="450" y1="70" x2="495" y2="150" stroke="var(--ink)" stroke-width="3"/>
+            <path d="M385 150 H515 Q505 190 450 190 Q395 190 385 150 Z" fill="var(--accent)"/>
+            <text class="svg-text" x="450" y="224" text-anchor="middle">Poorer countries</text>
+          </g>
+        </svg>
+        <div>
+          <p class="reveal" id="scaleText" style="font-size:1.2rem" aria-live="polite">Pick a question.</p>
+          <p class="small">An illustration of the idea, not exact data.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Genesis -->
+    <div class="panel game">
+      <h3>Game 4: Two ways to read "dominion"</h3>
+      <div class="seg" role="group" aria-label="Choose a reading">
+        <button type="button" data-gen="dom" aria-pressed="true">Dominate</button>
+        <button type="button" data-gen="keep" aria-pressed="false">Till and keep</button>
+      </div>
+      <p class="reveal" id="genText" style="margin-top:18px" aria-live="polite">Some people read it as permission to use nature however we like. In 1967 the historian Lynn White argued that this idea encouraged people to exploit the environment.</p>
+    </div>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section id="quiz" class="band-blue">
+  <div class="wrap">
+    <h2>Quick quiz</h2>
+    <p class="lead">Four questions. You get an answer straight away.</p>
+    <div class="panel">
+      <div id="quizBox"></div>
+      <div class="row">
+        <p class="msg" id="quizScore" style="margin:0" aria-live="polite"></p>
+        <button class="btn ghost" type="button" id="quizReset">Try again</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CASES -->
+<section id="cases">
+  <div class="wrap">
+    <h2>Three real cases</h2>
+    <p class="lead">We acted like environmental detectives. We used published data and read each case through the four ideas.</p>
+    <div class="tabs" role="tablist" aria-label="Cases">
+      <button class="tab" role="tab" id="tab1" aria-controls="p1" aria-selected="true" tabindex="0">Water and fertilizers</button>
+      <button class="tab" role="tab" id="tab2" aria-controls="p2" aria-selected="false" tabindex="-1">Electronic waste</button>
+      <button class="tab" role="tab" id="tab3" aria-controls="p3" aria-selected="false" tabindex="-1">Unequal climate impacts</button>
+    </div>
+
+    <div class="panel" role="tabpanel" id="p1" aria-labelledby="tab1">
+      <div class="big">400+<small>coastal dead zones</small></div>
+      <p>Scientists have documented more than 400 "dead zones" along the world's coasts, where the water has too little oxygen for sea life. Fertilizer runoff from farms is a leading cause (Diaz and Rosenberg, 2008).</p>
+      <ol class="steps" id="runoff" aria-live="polite"></ol>
+      <button class="btn" type="button" id="runoffBtn">Follow the fertilizer</button>
+      <div class="who" aria-label="Who is affected"><span>Rivers and seas</span><span>Rural communities using untreated local water</span></div>
+      <p class="think">Producers keep the profit. Who pays for the damage downstream?</p>
+    </div>
+
+    <div class="panel" role="tabpanel" id="p2" aria-labelledby="tab2" hidden>
+      <div class="big">62<small>million tonnes of e-waste in 2022</small></div>
+      <p>Phones, laptops and appliances become e-waste. Look how much there is, and how little is documented as recycled (Forti et al., 2020; Baldé et al., 2024).</p>
+      <div class="bars" id="ewaste">
+        <div>
+          <strong>Total e-waste made</strong>
+          <div class="bar-row"><span>2019</span><div class="bar-track"><div class="bar-fill" data-w="86.5">53.6 Mt</div></div></div>
+          <div class="bar-row"><span>2022</span><div class="bar-track"><div class="bar-fill" data-w="100">62 Mt</div></div></div>
+        </div>
+        <div>
+          <strong>Share documented as recycled</strong>
+          <div class="bar-row"><span>2019</span><div class="bar-track"><div class="bar-fill green sm" data-w="17.4">17.4%</div></div></div>
+          <div class="bar-row"><span>2022</span><div class="bar-track"><div class="bar-fill green sm" data-w="22.3">22.3%</div></div></div>
+        </div>
+      </div>
+      <p>Much of the rest is dumped, burned or processed informally, often by workers in lower-income countries who are exposed to toxic substances. Recycling technology mostly exists. What is missing are the rules that make it a must.</p>
+      <p class="think">What do you do with your old phone?</p>
+    </div>
+
+    <div class="panel" role="tabpanel" id="p3" aria-labelledby="tab3" hidden>
+      <div class="big">3.3 to 3.6<small>billion people</small></div>
+      <p>This is how many people live in places that are highly vulnerable to climate change (IPCC, 2022). That means communities with poverty, weak infrastructure and little ability to adapt.</p>
+      <div class="big" style="margin-top:20px">100<small>million more people in poverty by 2030</small></div>
+      <p>That is the World Bank's estimate if there is no action (Hallegatte et al., 2016). These communities contributed the least to historical emissions. This is the ecological debt in real life, and it is what Pope Francis means by hearing both the cry of the Earth and the cry of the poor.</p>
+      <p class="think">If you did not cause a problem, should you have to pay for it?</p>
+    </div>
+  </div>
+</section>
+
+<!-- PATTERN -->
+<section id="pattern" class="band">
+  <div class="wrap">
+    <h2>What the three cases have in common</h2>
+    <p class="lead">Open each pattern to see it in every case.</p>
+    <div class="pat" id="pat"></div>
+  </div>
+</section>
+
+<!-- CONCLUSION -->
+<section id="conclusion">
+  <div class="wrap">
+    <h2>Is technology enough?</h2>
+    <p class="lead">Not on its own. It is necessary, but it is not sufficient.</p>
+    <div class="vs">
+      <div class="panel yes"><h3>What technology can do</h3><p>Precision farming wastes less fertilizer. Better recycling recovers materials. Low-carbon energy cuts emissions.</p></div>
+      <div class="panel no"><h3>What it cannot do alone</h3><p>It does not decide who bears the remaining harm, it does not force companies to design products for reuse, and it does not settle who pays for adaptation. Markets also do not count damage unless rules make them.</p></div>
+    </div>
+
+    <h2 style="margin-top:56px">What can be done?</h2>
+    <div class="tabs" role="tablist" aria-label="Who can act">
+      <button class="tab" role="tab" id="atab1" aria-controls="a1" aria-selected="true" tabindex="0">Governments</button>
+      <button class="tab" role="tab" id="atab2" aria-controls="a2" aria-selected="false" tabindex="-1">Companies</button>
+      <button class="tab" role="tab" id="atab3" aria-controls="a3" aria-selected="false" tabindex="-1">You and your school</button>
+    </div>
+    <div class="panel" role="tabpanel" id="a1" aria-labelledby="atab1">
+      <h3>Match responsibility to contribution</h3>
+      <p>Climate finance for vulnerable countries. Extended producer responsibility, which means companies are responsible for electronics and packaging after people stop using them.</p>
+    </div>
+    <div class="panel" role="tabpanel" id="a2" aria-labelledby="atab2" hidden>
+      <h3>Count the costs they now pass on</h3>
+      <p>Add the damage to rivers, workers and communities to the real cost of a product. Design things to be repaired and reused, not thrown away.</p>
+    </div>
+    <div class="panel" role="tabpanel" id="a3" aria-labelledby="atab3" hidden>
+      <h3>Start at the scale you can reach</h3>
+      <p>Our essay suggests studying a local case. For example, how a circular practice changes both the amount of waste and who suffers the harm in one community. Choose your own first step:</p>
+      <div class="pledge" role="group" aria-label="Choose your pledge" id="pledge"></div>
+      <p class="msg good" id="pledgeMsg" aria-live="polite"></p>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL -->
+<section class="final" aria-label="Final message">
+  <div class="wrap">
+    <blockquote>The cry of the Earth and the cry of the poor are one cry.</blockquote>
+    <p>Pope Francis, <em>Laudato Si'</em> (2015), paragraph 49</p>
+  </div>
+</section>
+
+<!-- FEEDBACK -->
+<section id="feedback">
+  <div class="wrap">
+    <h2>Your turn</h2>
+    <p class="lead">Tell us what you learned. Your answers stay on this device unless you copy and send them.</p>
+
+    <div class="panel">
+      <h3>Reflection rubric</h3>
+      <p class="small">1 = I did not understand. 4 = I could explain it myself.</p>
+      <div class="scroll-x">
+        <table id="rubricS">
+          <thead><tr><th scope="col">Criterion</th><th scope="col">1</th><th scope="col">2</th><th scope="col">3</th><th scope="col">4</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <label for="sentence" style="display:block;margin-top:18px;font-weight:700">One thing I will do differently after this presentation is&hellip;</label>
+      <textarea id="sentence"></textarea>
+      <div class="row">
+        <button class="btn" type="button" id="saveS">Save my reflection</button>
+        <button class="btn ghost" type="button" id="copyS">Copy my answers</button>
+        <span class="msg" id="msgS" aria-live="polite"></span>
+      </div>
+      <pre class="out" id="outS" hidden></pre>
+    </div>
+
+    <div class="panel" style="margin-top:20px">
+      <h3>Class vote</h3>
+      <p class="small">Votes are counted on this device. Count by show of hands, or pass one device around.</p>
+      <div class="grid g2" style="margin-top:12px">
+        <div>
+          <p><strong>Which new idea are you taking with you?</strong></p>
+          <div id="voteConcept"></div>
+        </div>
+        <div>
+          <p><strong>Which case hit you the hardest?</strong></p>
+          <div id="voteCase"></div>
+        </div>
+      </div>
+      <div class="row"><button class="btn ghost" type="button" id="voteReset">Reset votes</button></div>
+    </div>
+  </div>
+</section>
+
+<!-- TEACHER -->
+<section id="teacher" class="band-blue">
+  <div class="wrap">
+    <h2>Teacher evaluation</h2>
+    <p class="lead">For the 3rd-year classroom teacher. Choose one level per row.</p>
+    <div class="panel">
+      <div class="scroll-x">
+        <table id="rubricT">
+          <thead><tr><th scope="col">Criterion</th><th scope="col">Excellent (4)</th><th scope="col">Good (3)</th><th scope="col">Developing (2)</th><th scope="col">Insufficient (1)</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <label for="tcomments" style="display:block;margin-top:18px;font-weight:700">Comments and suggestions</label>
+      <textarea id="tcomments"></textarea>
+      <label for="tname" style="display:block;margin-top:14px;font-weight:700">Name (optional)</label>
+      <input type="text" id="tname" autocomplete="off">
+      <div class="row">
+        <button class="btn" type="button" id="saveT">Calculate and save</button>
+        <button class="btn ghost" type="button" id="copyT">Copy result</button>
+        <button class="btn ghost" type="button" id="printT">Print</button>
+        <span class="msg" id="msgT" aria-live="polite"></span>
+      </div>
+      <pre class="out" id="outT" hidden></pre>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <h3>References</h3>
+    <ul>
+      <li>Baldé, C. P., Kuehr, R., Yamamoto, T., et al. (2024). <em>The global e-waste monitor 2024</em>. International Telecommunication Union &amp; United Nations Institute for Training and Research.</li>
+      <li>Diaz, R. J., &amp; Rosenberg, R. (2008). Spreading dead zones and consequences for marine ecosystems. <em>Science, 321</em>(5891), 926–929.</li>
+      <li>Ellen MacArthur Foundation. (2013). <em>Towards the circular economy</em>.</li>
+      <li>Forti, V., Baldé, C. P., Kuehr, R., &amp; Bel, G. (2020). <em>The global e-waste monitor 2020</em>. United Nations University, ITU &amp; ISWA.</li>
+      <li>Francis. (2015). <em>Laudato si': On care for our common home</em>. Libreria Editrice Vaticana.</li>
+      <li>Geissdoerfer, M., Savaget, P., Bocken, N. M. P., &amp; Hultink, E. J. (2017). The circular economy: A new sustainability paradigm? <em>Journal of Cleaner Production, 143</em>, 757–768.</li>
+      <li>Hallegatte, S., et al. (2016). <em>Shock waves: Managing the impacts of climate change on poverty</em>. World Bank.</li>
+      <li>IPCC. (2022). <em>Climate change 2022: Impacts, adaptation and vulnerability</em>. Working Group II, Sixth Assessment Report. Cambridge University Press.</li>
+      <li>Mateo-Sagasta, J., Zadeh, S. M., &amp; Turral, H. (2017). <em>Water pollution from agriculture: A global review</em>. FAO &amp; IWMI.</li>
+      <li>White, L., Jr. (1967). The historical roots of our ecologic crisis. <em>Science, 155</em>(3767), 1203–1207.</li>
+    </ul>
+    <p class="small" style="margin-top:18px">Throwaway Culture and the Cry of the Poor: Testing the Environmental and Social Claims of Laudato Si'. Demian, Rafael, Galo and Facundo. Los Caminos, IGCSE Environmental Management, 29 September 2026.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+"use strict";
+var $=function(s,r){return (r||document).querySelector(s)};
+var $$=function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
+var reduce=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* ---------- safe storage ---------- */
+function load(k,d){try{var v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}}
+function save(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+
+/* ---------- theme ---------- */
+$("#themeBtn").addEventListener("click",function(){
+  var r=document.documentElement;
+  var cur=r.getAttribute("data-theme")||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");
+  r.setAttribute("data-theme",cur==="dark"?"light":"dark");
+});
+
+/* ---------- progress + active nav ---------- */
+var bar=$("#bar");
+function onScroll(){
+  var h=document.documentElement.scrollHeight-window.innerHeight;
+  bar.style.transform="scaleX("+(h>0?Math.min(1,window.scrollY/h):0)+")";
+}
+window.addEventListener("scroll",onScroll,{passive:true});onScroll();
+var links=$$(".nav a");
+if("IntersectionObserver" in window){
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(e.isIntersecting){
+        links.forEach(function(a){a.removeAttribute("aria-current")});
+        var a=links.filter(function(l){return l.getAttribute("href")==="#"+e.target.id})[0];
+        if(a){a.setAttribute("aria-current","true");a.scrollIntoView({block:"nearest",inline:"nearest"})}
+      }
+    });
+  },{rootMargin:"-45% 0px -50% 0px"});
+  links.forEach(function(a){var t=$(a.getAttribute("href"));if(t)io.observe(t)});
+}
+
+/* ---------- hero: line vs circle ---------- */
+var NS="http://www.w3.org/2000/svg";
+function el(n,a,p){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e}
+function item(kind){
+  var g=el("g",{});
+  if(kind===0){el("rect",{x:-8,y:-13,width:16,height:26,rx:4,fill:"#2B50E6"},g);el("rect",{x:-5,y:-9,width:10,height:15,rx:1,fill:"#cfd9ff"},g)}
+  if(kind===1){el("rect",{x:-6,y:-6,width:12,height:19,rx:4,fill:"#1F8A5B"},g);el("rect",{x:-2.5,y:-14,width:5,height:9,fill:"#1F8A5B"},g)}
+  if(kind===2){el("path",{d:"M-12 -8 L-5 -13 Q0 -8 5 -13 L12 -8 L8 -2 L6 -4 V12 H-6 V-4 L-8 -2 Z",fill:"#C8372D"},g)}
+  if(kind===3){el("circle",{r:10,fill:"#FFCF33"},g);el("rect",{x:-4,y:9,width:8,height:5,rx:1.5,fill:"#8a6d00"},g)}
+  return g;
+}
+function addItems(host,pathId,dur,fade){
+  for(var i=0;i<4;i++){
+    var g=item(i);
+    var begin="-"+(i*dur/4).toFixed(2)+"s";
+    var am=el("animateMotion",{dur:dur+"s",begin:begin,repeatCount:"indefinite",rotate:"0"},g);
+    var mp=el("mpath",{},am);mp.setAttributeNS("http://www.w3.org/1999/xlink","href","#"+pathId);mp.setAttribute("href","#"+pathId);
+    if(fade){el("animate",{attributeName:"opacity",values:"1;1;0",keyTimes:"0;0.88;1",dur:dur+"s",begin:begin,repeatCount:"indefinite"},g)}
+    host.appendChild(g);
+  }
+}
+var belt=$("#belt");
+addItems($("#lineItems"),"linePath",8,true);
+addItems($("#loopItems"),"loopPath",12,false);
+if(reduce&&belt.pauseAnimations){belt.pauseAnimations()}
+var caps={
+  line:"The line: take, make, use, throw away. The waste has nowhere to go but the landfill.",
+  loop:"The circle: things are repaired, reused and recycled. Nothing is waste, because it comes back as something new."
+};
+function setModel(m){
+  $("#lineG").hidden=(m!=="line");$("#loopG").hidden=(m!=="loop");
+  $("#btnLine").setAttribute("aria-pressed",m==="line");$("#btnLoop").setAttribute("aria-pressed",m==="loop");
+  $("#beltCaption").textContent=caps[m];
+}
+$("#btnLine").addEventListener("click",function(){setModel("line")});
+$("#btnLoop").addEventListener("click",function(){setModel("loop")});
+
+/* ---------- hook ---------- */
+var hookTxt={
+  a:"Even a few things add up. Each one came from somewhere, and each one ends up somewhere.",
+  b:"That is about what most of us do in a day. Multiply it by every person in your school.",
+  c:"That is a lot. And you probably did not think of most of it as waste."
+};
+$$("[data-hook]").forEach(function(b){
+  b.addEventListener("click",function(){
+    $$("[data-hook]").forEach(function(x){x.setAttribute("aria-pressed","false")});
+    b.setAttribute("aria-pressed","true");
+    $("#hookReveal").textContent=hookTxt[b.getAttribute("data-hook")]+" Where does it all go? And who pays for it?";
+  });
+});
+
+/* ---------- concept cards ---------- */
+$$(".concept").forEach(function(c){
+  var btn=$("button",c),def=$(".def",c),tap=$(".tap",c);
+  btn.addEventListener("click",function(){
+    var open=btn.getAttribute("aria-expanded")==="true";
+    btn.setAttribute("aria-expanded",String(!open));
+    def.hidden=open;c.setAttribute("data-open",String(!open));
+    tap.textContent=open?"Tap to open":"Tap to close";
+  });
+});
+
+/* ---------- order game ---------- */
+var steps=["Take from nature","Make","Use","Throw away"];
+var picked=[];
+function shuffle(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t}return a}
+function renderOrder(){
+  var shuffled=renderOrder.s||(renderOrder.s=shuffle(steps));
+  if(shuffled.join()===steps.join()){renderOrder.s=shuffled=shuffle(steps)}
+  var sl=$("#slots"),ch=$("#chips");sl.innerHTML="";ch.innerHTML="";
+  for(var i=0;i<steps.length;i++){
+    var s=document.createElement("div");s.className="slot"+(picked[i]?" filled":"");
+    s.textContent=picked[i]||("Step "+(i+1));sl.appendChild(s);
+  }
+  shuffled.forEach(function(t){
+    var b=document.createElement("button");b.type="button";b.className="chip";b.textContent=t;
+    b.disabled=picked.indexOf(t)>-1;
+    b.addEventListener("click",function(){
+      var m=$("#orderMsg");
+      if(steps[picked.length]===t){
+        picked.push(t);m.className="msg good";
+        m.textContent=picked.length===steps.length?"Correct. It is a straight line, and it ends in the bin. Nature does not work like this.":"Right. What comes next?";
+      }else{m.className="msg bad";m.textContent="Not yet. Think about what has to happen first."}
+      renderOrder();
+    });
+    ch.appendChild(b);
+  });
+}
+$("#orderReset").addEventListener("click",function(){picked=[];renderOrder.s=null;$("#orderMsg").textContent="";renderOrder()});
+renderOrder();
+
+/* ---------- web ---------- */
+var nodes=[
+  {id:"Climate",x:200,y:50,t:"Warmer weather harms crops and homes. That hits people and their jobs."},
+  {id:"Nature",x:338,y:150,t:"Polluted rivers and seas damage fish and soil, which feed people."},
+  {id:"People",x:285,y:300,t:"Poor communities often live near waste and have fewer ways to protect themselves."},
+  {id:"Economy",x:115,y:300,t:"Cheap products can hide costs that are paid by nature and by workers."},
+  {id:"Justice",x:62,y:150,t:"Fair rules decide who pays for the damage and who gets protected."}
+];
+var web=$("#web"),lines=[];
+for(var i=0;i<nodes.length;i++)for(var j=i+1;j<nodes.length;j++){
+  var ln=el("line",{x1:nodes[i].x,y1:nodes[i].y,x2:nodes[j].x,y2:nodes[j].y,"class":"web-line"},web);
+  lines.push({el:ln,a:i,b:j});
+}
+var gs=nodes.map(function(n,idx){
+  var g=el("g",{"class":"web-node",tabindex:"0",role:"button","aria-pressed":"false","aria-label":n.id},web);
+  el("circle",{cx:n.x,cy:n.y,r:38},g);
+  var t=el("text",{x:n.x,y:n.y+5,"text-anchor":"middle"},g);t.textContent=n.id;
+  function pick(){
+    gs.forEach(function(x){x.setAttribute("aria-pressed","false")});
+    g.setAttribute("aria-pressed","true");
+    lines.forEach(function(l){l.el.setAttribute("class","web-line"+((l.a===idx||l.b===idx)?" on":""))});
+    $("#webText").textContent=n.t;
+  }
+  g.addEventListener("click",pick);
+  g.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();pick()}});
+  return g;
+});
+
+/* ---------- scale ---------- */
+var scaleTxt={
+  pollute:"Wealthier countries consume more resources and release more pollution. This side is heavy.",
+  harm:"But poorer countries often suffer more of the damage, with fewer ways to protect themselves. The scale is out of balance. That gap is what Pope Francis calls ecological debt."
+};
+$$("[data-scale]").forEach(function(b){
+  b.addEventListener("click",function(){
+    $$("[data-scale]").forEach(function(x){x.setAttribute("aria-pressed","false")});
+    b.setAttribute("aria-pressed","true");
+    var k=b.getAttribute("data-scale"),left=(k==="pollute");
+    /* the heavy side goes down: left down = counter-clockwise */
+    $("#beam").style.transform="rotate("+(left?-10:10)+"deg)";
+    $("#panL").style.transform="translateY("+(left?26:-26)+"px)";
+    $("#panR").style.transform="translateY("+(left?-26:26)+"px)";
+    $("#scaleText").textContent=scaleTxt[k];
+  });
+});
+
+/* ---------- genesis ---------- */
+var genTxt={
+  dom:"Some people read it as permission to use nature however we like. In 1967 the historian Lynn White argued that this idea encouraged people to exploit the environment.",
+  keep:"Pope Francis rejects that reading. The Bible asks us to \"till and keep\" creation, which means to work the land and look after it for everyone, now and in the future."
+};
+$$("[data-gen]").forEach(function(b){
+  b.addEventListener("click",function(){
+    $$("[data-gen]").forEach(function(x){x.setAttribute("aria-pressed","false")});
+    b.setAttribute("aria-pressed","true");
+    $("#genText").textContent=genTxt[b.getAttribute("data-gen")];
+  });
+});
+
+/* ---------- quiz ---------- */
+var quiz=[
+  {q:"Which one describes the throwaway culture?",o:["Take, make, use and throw away","Repair, reuse and recycle","Only use things that are free"],a:0,e:"Yes. It is a straight line that ends in the bin, while nature works in circles."},
+  {q:"What does integral ecology say?",o:["Each problem is separate and needs its own expert","Climate, nature, people and justice are all connected","Only governments can protect the environment"],a:1,e:"Right. You cannot fix one part without looking at the others."},
+  {q:"What does ecological debt mean?",o:["Wealthier countries owe poorer ones, because they use and pollute more","Poorer countries owe money for using fertilizers","Every country owes the same amount"],a:0,e:"Correct. Poorer countries suffer a lot of the damage but caused less of it."},
+  {q:"According to Pope Francis, what does \"dominion\" in Genesis mean?",o:["Using nature however we want","Caring for creation, like a gardener","Leaving nature completely alone"],a:1,e:"Yes. \"Till and keep\" means to look after creation."}
+];
+var answered={};
+function renderQuiz(){
+  var box=$("#quizBox");box.innerHTML="";answered={};
+  quiz.forEach(function(q,qi){
+    var f=document.createElement("fieldset");f.className="q";
+    var l=document.createElement("legend");l.textContent=(qi+1)+". "+q.q;f.appendChild(l);
+    q.o.forEach(function(t,oi){
+      var lab=document.createElement("label");lab.className="opt";
+      lab.innerHTML='<input type="radio" name="q'+qi+'" value="'+oi+'"><span>'+esc(t)+'</span>';
+      f.appendChild(lab);
+    });
+    var fb=document.createElement("p");fb.className="fb";fb.setAttribute("aria-live","polite");f.appendChild(fb);
+    f.addEventListener("change",function(e){
+      if(answered[qi]!==undefined)return;
+      var v=+e.target.value;answered[qi]=v;
+      $$("input",f).forEach(function(i){i.disabled=true});
+      var labs=$$(".opt",f);
+      labs[q.a].classList.add("right");
+      if(v!==q.a){labs[v].classList.add("wrong");fb.textContent="Not quite. "+q.e;fb.style.color="var(--red)"}
+      else{fb.textContent=q.e;fb.style.color="var(--leaf)"}
+      var n=Object.keys(answered).length;
+      if(n===quiz.length){
+        var s=quiz.filter(function(qq,i){return answered[i]===qq.a}).length;
+        $("#quizScore").textContent="Your score: "+s+" out of "+quiz.length+".";
+      }
+    });
+    box.appendChild(f);
+  });
+  $("#quizScore").textContent="";
+}
+$("#quizReset").addEventListener("click",renderQuiz);renderQuiz();
+
+/* ---------- tabs (shared) ---------- */
+function tabs(ids,onShow){
+  var t=ids.map(function(i){return $("#"+i[0])}),p=ids.map(function(i){return $("#"+i[1])});
+  function sel(n,focus){
+    t.forEach(function(x,i){x.setAttribute("aria-selected",String(i===n));x.tabIndex=i===n?0:-1;p[i].hidden=i!==n});
+    if(focus)t[n].focus();
+    if(onShow)onShow(n);
+  }
+  t.forEach(function(x,i){
+    x.addEventListener("click",function(){sel(i)});
+    x.addEventListener("keydown",function(e){
+      if(e.key==="ArrowRight")sel((i+1)%t.length,true);
+      if(e.key==="ArrowLeft")sel((i+t.length-1)%t.length,true);
+      if(e.key==="Home")sel(0,true);
+      if(e.key==="End")sel(t.length-1,true);
+    });
+  });
+  sel(0);
+}
+function animateBars(){
+  $$("#ewaste .bar-fill").forEach(function(b){b.style.width="0";});
+  setTimeout(function(){$$("#ewaste .bar-fill").forEach(function(b){b.style.width=b.getAttribute("data-w")+"%"})},60);
+}
+tabs([["tab1","p1"],["tab2","p2"],["tab3","p3"]],function(n){if(n===1)animateBars()});
+tabs([["atab1","a1"],["atab2","a2"],["atab3","a3"]]);
+
+/* ---------- runoff steps ---------- */
+var run=[
+  "The farm uses a lot of fertilizer and pesticide to grow more food.",
+  "Rain washes part of it off the field. Much of the material leaves the field.",
+  "It flows into rivers. Communities that drink untreated local water face the biggest health risks.",
+  "At the coast the nutrients feed too much algae. When it decays, the oxygen drops and a dead zone forms."
+];
+var rn=0;
+$("#runoffBtn").addEventListener("click",function(){
+  var ol=$("#runoff"),b=$("#runoffBtn");
+  if(rn>=run.length){rn=0;ol.innerHTML="";b.textContent="Follow the fertilizer";return}
+  var li=document.createElement("li");
+  li.innerHTML='<span class="dot">'+(rn+1)+'</span><span>'+esc(run[rn])+'</span>';
+  ol.appendChild(li);rn++;
+  b.textContent=rn>=run.length?"Start again":"Next step";
+});
+
+/* ---------- pattern ---------- */
+var pats=[
+  {h:"A straight line from take to throw away",l:["Water: fertilizer leaves the field and nobody collects it again.","E-waste: in 2022 only 22.3% was documented as recycled.","Climate: the emissions come from the same take-make-use-throw-away system."]},
+  {h:"The harm lands on the people with the least power",l:["Water: rural communities that depend on untreated local water.","E-waste: informal workers in lower-income countries exposed to toxic substances.","Climate: communities with poverty, weak infrastructure and little ability to adapt."]},
+  {h:"Technology alone does not solve it",l:["Water: precision farming loses less fertilizer, but does not change who bears the remaining harm.","E-waste: recycling technology exists, but nobody is forced to use it.","Climate: low-carbon technology does not settle who pays for adaptation."]}
+];
+var pbox=$("#pat");
+pats.forEach(function(p,i){
+  var d=document.createElement("div");
+  d.innerHTML='<button type="button" class="ph" aria-expanded="false" aria-controls="pl'+i+'"><span>'+esc(p.h)+'</span><span aria-hidden="true">+</span></button><ul id="pl'+i+'" hidden>'+p.l.map(function(x){return "<li>"+esc(x)+"</li>"}).join("")+"</ul>";
+  var b=$("button",d),u=$("ul",d),sign=$("span:last-child",b);
+  b.addEventListener("click",function(){
+    var open=b.getAttribute("aria-expanded")==="true";
+    b.setAttribute("aria-expanded",String(!open));u.hidden=open;sign.textContent=open?"+":"−";
+  });
+  pbox.appendChild(d);
+});
+
+/* ---------- pledge ---------- */
+var pledges=["Repair before I replace","Pass on or reuse what I do not need","Take old electronics to a proper collection point","Propose a recycling project at school"];
+var pl=load("ls_pledge",null);
+var pbx=$("#pledge");
+function renderPledge(){
+  pbx.innerHTML="";
+  pledges.forEach(function(t){
+    var b=document.createElement("button");b.type="button";b.className="chip";b.style.textAlign="left";
+    b.textContent=t;b.setAttribute("aria-pressed",String(pl===t));
+    if(pl===t){b.style.background="var(--sun)";b.style.color="#10302A";b.style.borderColor="var(--sun)"}
+    b.addEventListener("click",function(){pl=t;save("ls_pledge",pl);renderPledge();$("#pledgeMsg").textContent="Your first step: "+t+"."});
+    pbx.appendChild(b);
+  });
+  if(pl)$("#pledgeMsg").textContent="Your first step: "+pl+".";
+}
+renderPledge();
+
+/* ---------- copy helper ---------- */
+function copyText(text,msgEl){
+  function fallback(){
+    var ta=document.createElement("textarea");ta.value=text;ta.setAttribute("readonly","");
+    ta.style.position="fixed";ta.style.opacity="0";document.body.appendChild(ta);ta.select();
+    var ok=false;try{ok=document.execCommand("copy")}catch(e){}
+    document.body.removeChild(ta);
+    msgEl.textContent=ok?"Copied.":"Could not copy. Select the text above and copy it by hand.";
+  }
+  try{
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(function(){msgEl.textContent="Copied."},fallback);
+    }else fallback();
+  }catch(e){fallback()}
+}
+
+/* ---------- student rubric ---------- */
+var sCrit=["I understood what throwaway culture is","I could connect the cases to the concepts","The presentation was clear and engaging","I learned something I did not know"];
+var sData=load("ls_student",{r:[],sentence:""});
+(function(){
+  var tb=$("#rubricS tbody");
+  sCrit.forEach(function(c,i){
+    var tr=document.createElement("tr");
+    var h='<th scope="row" style="font-weight:500;text-align:left;padding-left:0">'+esc(c)+"</th>";
+    for(var v=1;v<=4;v++)h+='<td><input type="radio" name="s'+i+'" value="'+v+'" aria-label="'+esc(c)+": "+v+'"'+(sData.r[i]===v?" checked":"")+"></td>";
+    tr.innerHTML=h;tb.appendChild(tr);
+  });
+  $("#sentence").value=sData.sentence||"";
+})();
+function studentSummary(){
+  var r=sCrit.map(function(c,i){var x=$('input[name="s'+i+'"]:checked');return x?+x.value:null});
+  var lines=["Student reflection: Throwaway culture and the cry of the poor",""];
+  sCrit.forEach(function(c,i){lines.push("- "+c+": "+(r[i]||"no answer")+" / 4")});
+  var s=$("#sentence").value.trim();
+  lines.push("","One thing I will do differently: "+(s||"(blank)"));
+  if(pl)lines.push("My first step: "+pl);
+  var v=load("ls_votes",{c:{},k:{}});
+  return {text:lines.join("\n"),r:r,sentence:s};
+}
+$("#saveS").addEventListener("click",function(){
+  var s=studentSummary();save("ls_student",{r:s.r,sentence:s.sentence});
+  var o=$("#outS");o.hidden=false;o.textContent=s.text;$("#msgS").textContent="Saved on this device.";
+});
+$("#copyS").addEventListener("click",function(){
+  var s=studentSummary();var o=$("#outS");o.hidden=false;o.textContent=s.text;copyText(s.text,$("#msgS"));
+});
+
+/* ---------- votes ---------- */
+var concepts=["Throwaway culture","Integral ecology","Ecological debt","Caring for creation"];
+var casesN=["Water and fertilizers","Electronic waste","Unequal climate impacts"];
+var votes=load("ls_votes",{c:{},k:{}});
+function renderVotes(){
+  function draw(host,list,store){
+    var h=$(host);h.innerHTML="";
+    var total=list.reduce(function(a,n){return a+(store[n]||0)},0);
+    list.forEach(function(n){
+      var c=store[n]||0;
+      var row=document.createElement("div");row.className="vote-row";
+      var b=document.createElement("button");b.type="button";b.textContent=n;b.setAttribute("aria-label","Add a vote for "+n);
+      var tr=document.createElement("div");tr.className="bar-track";
+      var f=document.createElement("div");f.className="bar-fill green";f.style.width=(total?Math.round(c/total*100):0)+"%";
+      tr.appendChild(f);
+      var nn=document.createElement("span");nn.className="n";nn.textContent=c;
+      row.appendChild(b);row.appendChild(tr);row.appendChild(nn);h.appendChild(row);
+      b.addEventListener("click",function(){store[n]=(store[n]||0)+1;save("ls_votes",votes);renderVotes()});
+    });
+  }
+  draw("#voteConcept",concepts,votes.c);draw("#voteCase",casesN,votes.k);
+}
+$("#voteReset").addEventListener("click",function(){votes={c:{},k:{}};save("ls_votes",votes);renderVotes()});
+renderVotes();
+
+/* ---------- teacher rubric ---------- */
+var tCrit=["Clarity of content for the age group","Participation and interactivity","Accuracy of concepts and data","Design and organization","Command of the topic and oral expression"];
+var tData=load("ls_teacher",{r:[],c:"",n:""});
+(function(){
+  var tb=$("#rubricT tbody");
+  tCrit.forEach(function(c,i){
+    var tr=document.createElement("tr");
+    var h='<th scope="row" style="font-weight:500;text-align:left;padding-left:0">'+esc(c)+"</th>";
+    [4,3,2,1].forEach(function(v){h+='<td><input type="radio" name="t'+i+'" value="'+v+'" aria-label="'+esc(c)+": "+v+'"'+(tData.r[i]===v?" checked":"")+"></td>"});
+    tr.innerHTML=h;tb.appendChild(tr);
+  });
+  $("#tcomments").value=tData.c||"";$("#tname").value=tData.n||"";
+})();
+function teacherSummary(){
+  var r=tCrit.map(function(c,i){var x=$('input[name="t'+i+'"]:checked');return x?+x.value:null});
+  var lines=["Teacher evaluation: Throwaway culture and the cry of the poor","Group: Demian, Rafael, Galo and Facundo",""];
+  var tot=0,cnt=0;
+  tCrit.forEach(function(c,i){lines.push("- "+c+": "+(r[i]||"not rated")+" / 4");if(r[i]){tot+=r[i];cnt++}});
+  lines.push("","Total: "+tot+" / "+(tCrit.length*4)+(cnt<tCrit.length?" (some rows not rated)":""));
+  var cm=$("#tcomments").value.trim(),nm=$("#tname").value.trim();
+  lines.push("Comments: "+(cm||"(none)"));
+  if(nm)lines.push("Evaluator: "+nm);
+  return {text:lines.join("\n"),r:r,c:cm,n:nm};
+}
+$("#saveT").addEventListener("click",function(){
+  var s=teacherSummary();save("ls_teacher",{r:s.r,c:s.c,n:s.n});
+  var o=$("#outT");o.hidden=false;o.textContent=s.text;$("#msgT").textContent="Saved on this device.";
+});
+$("#copyT").addEventListener("click",function(){
+  var s=teacherSummary();var o=$("#outT");o.hidden=false;o.textContent=s.text;copyText(s.text,$("#msgT"));
+});
+$("#printT").addEventListener("click",function(){
+  var s=teacherSummary();var o=$("#outT");o.hidden=false;o.textContent=s.text;
+  try{window.print()}catch(e){$("#msgT").textContent="Printing is not available here. Use Copy result instead."}
+});
+})();
+</script>
+</body>
+</html>

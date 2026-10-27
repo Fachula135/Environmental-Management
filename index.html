@@ -755,19 +755,42 @@ function onScroll(){
 }
 window.addEventListener("scroll",onScroll,{passive:true});onScroll();
 var links=$$(".nav a");
+/* ---------- progress + active nav ---------- */
+var bar=$("#bar");
+function onScroll(){
+  var h=document.documentElement.scrollHeight-window.innerHeight;
+  bar.style.transform="scaleX("+(h>0?Math.min(1,window.scrollY/h):0)+")";
+}
+window.addEventListener("scroll",onScroll,{passive:true});
+onScroll();
+
+var links=$$(".nav a");
+var navContainer=$(".nav");
+
 if("IntersectionObserver" in window){
   var io=new IntersectionObserver(function(es){
     es.forEach(function(e){
       if(e.isIntersecting){
         links.forEach(function(a){a.removeAttribute("aria-current")});
         var a=links.filter(function(l){return l.getAttribute("href")==="#"+e.target.id})[0];
-        if(a){a.setAttribute("aria-current","true");a.scrollIntoView({block:"nearest",inline:"nearest"})}
+        if(a){
+          a.setAttribute("aria-current","true");
+          // Desplazamiento suave únicamente dentro del contenedor del nav sin forzar scroll de la página
+          var left = a.offsetLeft - (navContainer.clientWidth / 2) + (a.clientWidth / 2);
+          navContainer.scrollTo({ left: left, behavior: 'smooth' });
+        }
       }
     });
-  },{rootMargin:"-45% 0px -50% 0px"});
-  links.forEach(function(a){var t=$(a.getAttribute("href"));if(t)io.observe(t)});
+  },{rootMargin:"-20% 0px -70% 0px"});
+  
+  links.forEach(function(a){
+    var href=a.getAttribute("href");
+    if(href && href.startsWith("#")){
+      var t=$(href);
+      if(t) io.observe(t);
+    }
+  });
 }
-
 /* ---------- hero: line vs circle ---------- */
 var NS="http://www.w3.org/2000/svg";
 function el(n,a,p){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e}

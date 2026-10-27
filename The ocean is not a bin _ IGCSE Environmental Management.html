@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The ocean is not a bin | IGCSE Environmental Management</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Figtree:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F3F7F9;--surface:#FFFFFF;--ink:#071E33;--soft:#46627A;--line:#BFD0DB;--navy:#071E33;--navy-ink:#EAF4FA;--aqua:#12C8BA;--sun:#FFC83D;--red:#E8454B;--edge:#071E33;
+--hd:"Bricolage Grotesque","Trebuchet MS",system-ui,sans-serif;--bd:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#06111B;--surface:#0E2133;--ink:#EAF4FA;--soft:#9DB6C8;--line:#24425A;--navy:#030B12;--red:#FF7A7F;--edge:#EAF4FA}}
+:root[data-theme="dark"]{--bg:#06111B;--surface:#0E2133;--ink:#EAF4FA;--soft:#9DB6C8;--line:#24425A;--navy:#030B12;--red:#FF7A7F;--edge:#EAF4FA}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 70px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:1.08rem/1.6 var(--bd)}
+h1,h2,h3{font-family:var(--hd);line-height:1.05;margin:0 0 .5em;letter-spacing:-.02em}
+h1{font-size:clamp(3rem,10vw,6.6rem);font-weight:800}h2{font-size:clamp(2rem,5vw,3.4rem);font-weight:800}h3{font-size:1.35rem;font-weight:700}
+p{margin:0 0 1em;max-width:60ch}[hidden]{display:none!important}
+:focus-visible{outline:3px solid var(--aqua);outline-offset:3px}
+.wrap{width:min(1060px,100%);margin-inline:auto;padding-inline:clamp(16px,4vw,40px)}
+section{padding-block:clamp(56px,9vw,104px)}
+.navy{background:var(--navy);color:var(--navy-ink)}.tint{background:color-mix(in srgb,var(--aqua) 14%,var(--bg))}
+.lead{font-size:1.25rem;color:var(--soft)}.navy .lead{color:#B4CBDA}
+.tag{display:inline-block;background:var(--sun);color:#071E33;font-weight:700;border-radius:8px;padding:.15em .7em;font-size:.92rem;margin-bottom:14px}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--navy);color:var(--navy-ink)}
+.top .wrap{display:flex;gap:6px;align-items:center;min-height:52px;overflow-x:auto;scrollbar-width:none}
+.top b{font-family:var(--hd);margin-right:10px;white-space:nowrap}
+.top a{color:inherit;text-decoration:none;padding:6px 12px;border-radius:8px;font-weight:500;white-space:nowrap}.top a:hover{background:rgba(255,255,255,.12)}
+.btn,.pick{font:inherit;font-weight:700;color:#071E33;background:var(--sun);border:2px solid var(--edge);border-radius:12px;padding:.65em 1.2em;cursor:pointer;box-shadow:4px 4px 0 var(--edge);min-height:44px;text-decoration:none;display:inline-block;transition:transform .1s,box-shadow .1s}
+.btn:active,.pick:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--edge)}
+.pick{background:var(--surface);color:var(--ink)}.pick[aria-pressed="true"]{background:var(--aqua);color:#071E33}
+.row{display:flex;flex-wrap:wrap;gap:12px;margin:14px 0}
+.panel{background:var(--surface);color:var(--ink);border:2px solid var(--edge);border-radius:18px;padding:clamp(18px,3vw,30px);box-shadow:6px 6px 0 var(--aqua)}
+.grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr))}
+.stat{background:var(--navy);color:var(--navy-ink);border:2px solid var(--aqua);border-radius:18px;padding:20px}
+.navy .stat{background:#0E2A44}
+.stat b{display:block;font:800 clamp(2.8rem,7vw,4.2rem)/1 var(--hd);color:var(--sun)}.stat span{display:block;margin-top:8px}
+.aloud{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;background:var(--sun);color:#071E33;border:2px solid var(--edge);border-radius:18px;padding:16px 20px;margin:26px 0;box-shadow:6px 6px 0 var(--edge)}
+.aloud .tag{background:#071E33;color:var(--sun);margin:0}.aloud p{margin:0;flex:1 1 260px;font:700 1.3rem/1.25 var(--hd);max-width:none}
+.say{font:700 1.3rem/1.3 var(--hd);border-left:8px solid var(--aqua);padding-left:16px;max-width:40ch}
+.hero{padding-bottom:0;overflow:hidden}.hero h1 span{color:var(--aqua)}
+.hero-grid{display:grid;gap:36px;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));align-items:center;padding-bottom:56px}
+.chain{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:16px 0}
+.chain span{background:var(--bg);border:2px solid var(--edge);border-radius:10px;padding:.35em .8em;font-weight:700}.chain .bad{background:var(--red);color:#fff}.chain .good{background:var(--aqua);color:#071E33}
+.wave{display:block;width:100%;height:auto;margin-bottom:-1px}
+.fw{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:16px 0}
+.fw button{font:inherit;font-weight:700;border:2px solid var(--edge);background:var(--surface);color:var(--ink);border-radius:14px;padding:8px 10px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:4px;min-width:104px;box-shadow:3px 3px 0 var(--edge)}
+.fw svg{width:48px;height:32px}.fw .hit{opacity:.3}.fw [aria-pressed="true"]{background:var(--sun);color:#071E33}.fw i{font-style:normal;font-size:1.4rem;color:var(--soft)}
+.topics{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0}.topics span{border:2px solid var(--edge);border-radius:8px;padding:.2em .7em;background:var(--surface);font-size:.95rem}.topics .on{background:var(--sun);color:#071E33;font-weight:700}
+.meter{margin:12px 0}.meter div.l{display:flex;justify-content:space-between;font-weight:700}
+.track{height:30px;border:2px solid var(--edge);border-radius:10px;background:var(--bg);overflow:hidden}.fill{height:100%;width:0;transition:width .5s}
+.choices{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));margin:18px 0}
+.choices .pick{text-align:left}.choices small{display:block;font-weight:500;color:var(--soft)}
+.end{border:3px solid var(--edge);border-radius:18px;padding:22px;margin:16px 0}.end.win{background:var(--aqua);color:#071E33}.end.lose{background:var(--red);color:#fff}.end.mid{background:var(--sun);color:#071E33}
+.end h3{font-size:2.2rem;margin-bottom:.2em}.end p{max-width:none}
+table{border-collapse:collapse;width:100%;min-width:520px}th,td{padding:9px 6px;text-align:center;border-bottom:1px solid var(--line)}th:first-child,td:first-child{text-align:left}td input{width:22px;height:22px;accent-color:var(--aqua)}
+.vote{display:grid;gap:10px;grid-template-columns:1fr auto;align-items:center;margin:10px 0}.vote .track{grid-column:1 / -1;height:16px}
+footer{padding:40px 0;font-size:.9rem;color:var(--soft)}footer li{margin-bottom:6px}
+@media print{.top,.hero,section:not(#feedback){display:none!important}}
+@media (prefers-reduced-motion: reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style></head><body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="fish" viewBox="0 0 42 22"><path d="M0 11Q14-1 30 11Q14 23 0 11ZM30 11L42 2V20Z"/><circle cx="8" cy="9" r="2" fill="#071E33"/></symbol></svg>
+<header class="top"><div class="wrap"><b>Environmental Management</b><a href="#hook">Challenge</a><a href="#subject">The subject</a><a href="#ocean">The ocean</a><a href="#game">Game</a><a href="#ideas">Big ideas</a><a href="#feedback">Your turn</a></div></header>
+<main>
+<section class="navy hero"><div class="wrap">
+ <div class="hero-grid"><div>
+  <span class="tag">IGCSE Environmental Management &middot; Lesson 1</span>
+  <h1>The ocean is <span>not a bin.</span></h1>
+  <p class="lead">We take fish out of the sea and put our waste back in. In this lesson you will see what that does, and then you will run a fishery yourself.</p>
+  <a class="btn" href="#hook">Start with a 1-minute challenge</a>
+ </div>
+ <div class="panel"><h3>Two ways to run an economy</h3>
+  <div class="row"><button class="pick" id="bL" aria-pressed="true">The line</button><button class="pick" id="bC" aria-pressed="false">The circle</button></div>
+  <svg viewBox='0 0 560 240' style='width:100%;height:auto;display:block;color:var(--ink)' role='img' aria-label='Objects travelling along a conveyor belt to a landfill, or around a circle where they are reused'>
+   <g id='lG'><rect x='20' y='140' width='430' height='10' rx='5' fill='var(--line)'/><path id='pL' d='M20 130 H430 Q470 130 470 170 V210' fill='none'/><path d='M440 190 H500 V228 H440Z' fill='var(--ink)'/><text x='470' y='222' text-anchor='middle' style='font:700 12px Figtree,sans-serif;fill:var(--surface)'>Landfill</text><g style='font:700 15px Figtree,sans-serif;fill:currentColor'><text x='60' y='100' text-anchor='middle'>Take</text><text x='170' y='100' text-anchor='middle'>Make</text><text x='280' y='100' text-anchor='middle'>Use</text><text x='395' y='100' text-anchor='middle' style='fill:var(--red)'>Throw away</text></g></g>
+   <g id='cG' hidden><circle cx='280' cy='120' r='75' fill='none' stroke='var(--line)' stroke-width='10'/><path id='pC' d='M280 45 A75 75 0 1 1 280 195 A75 75 0 1 1 280 45Z' fill='none'/><g style='font:700 15px Figtree,sans-serif;fill:currentColor'><text x='280' y='28' text-anchor='middle'>Make</text><text x='368' y='125'>Use</text><text x='280' y='222' text-anchor='middle' style='fill:var(--aqua)'>Reuse and recycle</text><text x='192' y='125' text-anchor='end'>Collect</text></g></g></svg>
+  <div class="chain" id="chain"></div><p id="chainT"></p></div></div>
+</div>
+<svg class="wave" viewBox="0 0 1200 70" preserveAspectRatio="none" aria-hidden="true"><path d="M0 40Q150 0 300 40T600 40T900 40T1200 40V70H0Z" fill="var(--bg)"/></svg>
+</section>
+
+<section id="hook"><div class="wrap">
+ <span class="tag">Challenge</span><h2>How well do you know the sea?</h2>
+ <p class="lead">Shrimp are one of the most popular seafoods in the world. What percentage of the world fish catch is shrimp? Move the slider, then reveal.</p>
+ <label for="gs" style="position:absolute;left:-9999px">Your guess</label>
+ <input type="range" id="gs" min="0" max="60" value="30" style="width:100%;max-width:520px;min-height:44px;accent-color:var(--aqua)">
+ <p>Your guess: <strong id="gv">30%</strong></p><button class="btn" id="gb">Reveal</button>
+ <div id="gr" hidden><div class="grid" style="margin-top:20px"><div class="stat"><b>2%</b><span>of the world fish catch is shrimp</span></div><div class="stat"><b>30%+</b><span>of the world bycatch comes from shrimp fishing</span></div></div>
+ <p class="say" id="gm" style="margin-top:20px"></p><p><strong>Bycatch</strong> = animals caught by accident that were not the target, usually thrown back. (Cambridge IGCSE coursebook, Chapter 5)</p></div>
+ <div class="aloud"><span class="tag">Say it out loud</span><p>Why would a boat throw dead fish back into the sea? Who decides what counts as waste?</p></div>
+</div></section>
+
+<section id="subject" class="tint"><div class="wrap">
+ <span class="tag">The subject</span><h2>What is IGCSE Environmental Management?</h2>
+ <p class="lead">Not memorising facts. You use data, case studies and decisions to answer: how can people use the planet without wrecking it? Nine topics, and today we do the one in yellow.</p>
+ <div class="topics"><span>Rocks and minerals</span><span>Energy</span><span>Agriculture</span><span>Water</span><span class="on">Oceans and fisheries</span><span>Natural hazards</span><span>Atmosphere</span><span>Human population</span><span>Ecosystems</span></div>
+ <div class="panel"><h3>Speak like an examiner</h3><p>The first word of a question tells you what to do. Tap one.</p>
+  <div class="row" id="cmd"></div><p class="say" id="cmdT">Pick a command word.</p></div>
+ <div class="aloud"><span class="tag">Say it out loud</span><p>Which of the nine topics matters most for your future? Convince the person next to you in 30 seconds.</p></div>
+</div></section>
+
+<section id="ocean" class="navy"><div class="wrap">
+ <span class="tag">The ocean</span><h2>Bigger than we thought. Weaker than we thought.</h2>
+ <div class="grid">
+  <div class="stat"><b>71%</b><span>of the Earth surface is ocean</span></div>
+  <div class="stat"><b>~10%</b><span>of the ocean is shallow shelf, where most commercial fish live</span></div>
+  <div class="stat"><b>75%+</b><span>of marine fisheries are threatened (coursebook)</span></div>
+  <div class="stat"><b>Half</b><span>of a huge net catch can be thrown away as bycatch</span></div></div>
+ <div class="aloud"><span class="tag">Say it out loud</span><p>The sea looks endless. Why did people think nothing we do could change it?</p></div>
+ <div class="panel"><h3>Who eats whom?</h3><p>Tap a link to remove it. See who is hit next.</p>
+  <div class="fw" id="fw"></div><p class="say" id="fwT">Pick a link in the chain.</p></div>
+ <div class="aloud"><span class="tag">Say it out loud</span><p>If the tiny plankton at the bottom of the chain died, which animals would notice first and which last? Why?</p></div>
+</div></section>
+
+<section id="game"><div class="wrap">
+ <span class="tag">Game</span><h2>Run the fishery</h2>
+ <p class="lead">You run a fishing town for six seasons. Nothing is simple: every decision pushes three things at once (ocean health, income and community trust), and some bets go wrong. Keep all three alive to win. If any one hits zero, you lose.</p>
+ <div class="panel" id="g"></div>
+</div></section>
+
+<section id="ideas" class="tint"><div class="wrap">
+ <span class="tag">Big ideas</span><h2>Four ideas to think with</h2>
+ <p class="lead">They come from <em>Laudato Si'</em> (Pope Francis, 2015), a letter about the environment. Tap each one.</p>
+ <div class="grid" id="cards"></div>
+ <div class="panel" style="margin-top:28px"><h3>Case lab: three simulators</h3><p>Pick a case and play with the sliders. These are simple models to show the idea, not exact data.</p><div class="row" id="labT"><button class="pick" data-l="f" aria-pressed="true">Fertilizer</button><button class="pick" data-l="e" aria-pressed="false">E-waste</button><button class="pick" data-l="c" aria-pressed="false">Climate</button></div>
+<div id="lf"><label for="fz"><strong>Fertilizer reaching the sea: <span id="fzv"></span></strong></label><input type="range" id="fz" min="0" max="100" value="20" style="width:100%;min-height:44px;accent-color:var(--aqua)"><button class="pick" id="fzb" aria-pressed="false">Plant buffer strips (cuts runoff by 40%)</button>
+<svg viewBox='0 0 600 190' style='width:100%;height:auto;display:block;margin-top:14px;border-radius:12px' role='img' aria-label='Sea with fish, algae and low oxygen'><rect width='600' height='190' fill='#1B5E8C'/><rect id='fzd' y='80' width='600' height='110' fill='#041421' opacity='0'/><rect id='fza' width='600' height='24' fill='#3FBF6A' opacity='0'/><g id='fzf'></g></svg><p class="say" id="fzt" style="margin-top:14px"></p></div>
+<div id="le" hidden><label for="ewlife"><strong>How long a phone lasts: <span id="ewl"></span></strong></label><input type="range" id="ewlife" min="1" max="6" value="3" style="width:100%;min-height:44px;accent-color:var(--aqua)"><label for="ewrec"><strong>Share formally recycled: <span id="ewr"></span></strong></label><input type="range" id="ewrec" min="0" max="100" value="22" style="width:100%;min-height:44px;accent-color:var(--aqua)">
+<div class="meter"><div class="l"><span>E-waste made per year</span><span id="ewmv"></span></div><div class="track"><div class="fill" id="ewm" style="background:var(--sun)"></div></div></div><div class="meter"><div class="l"><span>Dumped or burned</span><span id="ewdv"></span></div><div class="track"><div class="fill" id="ewd" style="background:var(--red)"></div></div></div><p class="say" id="ewt"></p></div>
+<div id="lc" hidden><label for="cw"><strong>Global warming by 2100: <span id="cwv"></span></strong></label><input type="range" id="cw" min="1.5" max="4" step="0.5" value="2.5" style="width:100%;min-height:44px;accent-color:var(--aqua)"><label for="ca"><strong>Money MEDCs give LEDCs to adapt: <span id="cav"></span></strong></label><input type="range" id="ca" min="0" max="100" value="0" style="width:100%;min-height:44px;accent-color:var(--aqua)">
+<div class="meter"><div class="l"><span>Harm to MEDCs</span><span id="chm"></span></div><div class="track"><div class="fill" id="chmb" style="background:var(--sun)"></div></div></div><div class="meter"><div class="l"><span>Harm to LEDCs</span><span id="chl"></span></div><div class="track"><div class="fill" id="chlb" style="background:var(--red)"></div></div></div><p class="say" id="cct"></p></div>
+<div id="cases" hidden></div><p id="caseT" hidden></p></div>
+ <div class="aloud"><span class="tag">Say it out loud</span><p>MEDCs caused most of the pollution. LEDCs feel much of the damage. Who should pay to fix it?</p></div>
+</div></section>
+
+<section id="feedback" class="navy"><div class="wrap">
+ <span class="tag">Your turn</span><h2>Vote and rate</h2>
+ <div class="panel"><h3>What was the best part?</h3><p class="lead" style="font-size:1rem">Votes are counted on this device.</p><div id="votes"></div></div>
+ <div class="panel" style="margin-top:22px"><h3>Student rubric (1 = lost, 4 = I could explain it)</h3><div style="overflow-x:auto"><table id="rs"></table></div><p><strong id="ts"></strong></p></div>
+ <div class="panel" style="margin-top:22px"><h3>Teacher rubric</h3><div style="overflow-x:auto"><table id="rt"></table></div><p><strong id="tt"></strong></p></div>
+</div></section>
+</main>
+<footer><div class="wrap"><ul>
+<li>Skinner, G., Crafer, K., Turner, M., Skinner, A., &amp; Stacey, J. <em>Cambridge IGCSE and O Level Environmental Management coursebook</em>. Cambridge University Press.</li>
+<li>Francis. (2015). <em>Laudato si'</em>. Libreria Editrice Vaticana. Diaz &amp; Rosenberg (2008), <em>Science</em> 321. Forti et al. (2020) and Bald&eacute; et al. (2024), Global E-waste Monitor. IPCC (2022). Hallegatte et al. (2016), World Bank.</li></ul>
+<p>By Demian, Rafael, Galo and Facundo &middot; Los Caminos &middot; IGCSE Environmental Management</p></div></footer>
+<script>
+(function(){"use strict";
+var $=function(s,r){return(r||document).querySelector(s)};
+function mk(t,c,h){var e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e}
+/* line vs circle */
+var CH={L:{c:['<span>Take</span>','<span>Make</span>','<span>Use</span>','<span class="bad">Throw away</span>'],t:'The line. Everything ends in the bin, and nature cannot absorb that much waste.'},C:{c:['<span>Make</span>','<span>Use</span>','<span class="good">Repair, reuse, recycle</span>','<span>back to Make</span>'],t:'The circle. Waste becomes the next product. This is the idea behind a circular economy.'}};
+function setC(k){$('#lG').toggleAttribute('hidden',k!=='L');$('#cG').toggleAttribute('hidden',k!=='C');$('#chain').innerHTML=CH[k].c.join('<i style="font-style:normal">&rarr;</i>');$('#chainT').textContent=CH[k].t;$('#bL').setAttribute('aria-pressed',k==='L');$('#bC').setAttribute('aria-pressed',k==='C')}
+$('#bL').onclick=function(){setC('L')};$('#bC').onclick=function(){setC('C')};setC('L');
+/* hook */
+var g=$('#gs');g.oninput=function(){$('#gv').textContent=g.value+'%'};
+$('#gb').onclick=function(){$('#gr').hidden=false;$('#gm').textContent=+g.value<=8?'Very close! A tiny part of the catch, a huge part of the waste.':'Most people guess higher. Shrimp are tiny in the catch, but the nets also catch and discard many other animals.'};
+/* command words */
+var CW={Describe:['Say what it is like or what happens. No reasons.','Describe what a dead zone is.'],Explain:['Give reasons: why or how.','Explain why a dead zone forms.'],Suggest:['Apply what you know to a new situation. Several answers can work.','Suggest how a fishing town could cope with fewer fish.'],Evaluate:['Weigh the good and the bad, then decide.','Evaluate whether banning fertilizer is the best way to protect fisheries.']};
+Object.keys(CW).forEach(function(k){var b=mk('button','pick',k);b.setAttribute('aria-pressed','false');b.onclick=function(){document.querySelectorAll('#cmd .pick').forEach(function(x){x.setAttribute('aria-pressed','false')});b.setAttribute('aria-pressed','true');$('#cmdT').textContent=CW[k][0]+' Example: '+CW[k][1]};$('#cmd').appendChild(b)});
+/* food chain */
+var IC=['<svg viewBox="0 0 48 32"><circle cx="12" cy="12" r="5" fill="#12C8BA"/><circle cx="30" cy="9" r="4" fill="#12C8BA"/><circle cx="24" cy="23" r="6" fill="#12C8BA"/></svg>','<svg viewBox="0 0 48 32"><path d="M8 20Q20 4 38 14Q28 16 22 26Q14 24 8 20Z" fill="#FF8A65"/></svg>','<svg viewBox="0 0 48 32"><use href="#fish" x="5" y="6" width="36" height="19" fill="#7FB8FF"/></svg>','<svg viewBox="0 0 48 32"><use href="#fish" x="0" y="2" width="48" height="26" fill="#3F6BFF"/></svg>','<svg viewBox="0 0 48 32"><path d="M6 20H42L36 28H12Z" fill="currentColor"/><rect x="23" y="4" width="2.5" height="16" fill="currentColor"/><path d="M26 5L38 16H26Z" fill="currentColor"/></svg>'];
+var N=[['Plankton','Everything above loses its food. Too much fertilizer makes plankton bloom, rot and use up the oxygen.'],['Small animals','Small fish lose their main food, and so does everything that eats them.'],['Small fish','Big fish, seabirds and many people lose a cheap food source.'],['Big fish','Boats go further for fewer fish, or switch to smaller species.'],['People','Fishing families lose food and income. Damage can start at either end.']];
+var sel=-1;function dFW(){var h=$('#fw');h.innerHTML='';N.forEach(function(n,i){var b=mk('button',sel>-1&&i>sel?'hit':'',IC[i]+'<span>'+n[0]+'</span>');b.setAttribute('aria-pressed',sel===i);b.onclick=function(){sel=sel===i?-1:i;dFW();$('#fwT').textContent=sel<0?'Pick a link in the chain.':'If '+n[0]+' drops: '+n[1]};h.appendChild(b);if(i<4)h.appendChild(mk('i','','&rarr;'))})}dFW();
+/* ideas */
+var ID=[['Throwaway culture','We take, make, use and throw away. Nature works in circles. Sometimes we also throw away people, like workers and communities that nobody protects.'],['Everything is connected','Climate, animals, plants, people and justice are linked. Fix one without the others and the problem moves.'],['Ecological debt','MEDCs (more economically developed countries) use more resources and pollute more. LEDCs (less economically developed) suffer much of the damage. That gap is the debt.'],['Care, not control','The Bible says to "till and keep" the Earth. Pope Francis reads that as looking after it, like a gardener, not using it however we like.']];
+ID.forEach(function(d){var p=mk('div','panel','<h3>'+d[0]+'</h3><p hidden>'+d[1]+'</p><button class="pick">Tap to open</button>');var b=p.querySelector('button'),t=p.querySelector('p');b.onclick=function(){t.hidden=!t.hidden;b.textContent=t.hidden?'Tap to open':'Close'};$('#cards').appendChild(p)});
+var CS={'Fertilizer':'More than 400 coastal dead zones exist, and farm runoff is a main cause. Producers keep the profit, the sea and the coast pay.','E-waste':'62 million tonnes in 2022, and only 22.3% documented as recycled. The rest is dumped, burned or processed by workers in LEDCs.','Climate':'3.3 to 3.6 billion people live in places highly vulnerable to climate change, and up to 100 million more could fall into poverty by 2030.'};
+Object.keys(CS).forEach(function(k){var b=mk('button','pick',k);b.setAttribute('aria-pressed','false');b.onclick=function(){document.querySelectorAll('#cases .pick').forEach(function(x){x.setAttribute('aria-pressed','false')});b.setAttribute('aria-pressed','true');$('#caseT').textContent=CS[k]};$('#cases').appendChild(b)});
+/* fishery game */
+var K=100,R=0.4,EV={4:['El Nino year: warm water halves fish growth this year.',0.5,0],7:['Fertilizer runoff creates a dead zone. Some fish die.',1,-12]};
+var s,m,y,msg;
+function meter(l,v,max,col,note){return '<div class="meter"><div class="l"><span>'+l+'</span><span>'+Math.round(v)+note+'</span></div><div class="track"><div class="fill" style="width:'+Math.min(100,v/max*100)+'%;background:'+col+'"></div></div></div>'}
+function start(){s=100;m=0;y=1;msg='Welcome, manager. Choose how hard to fish this year.';draw()}
+function draw(){var e=EV[y],h=$('#g');
+ h.innerHTML='<p class="tag">Year '+y+' of 10</p>'+meter('Fish in the sea',s,100,'var(--aqua)','  (collapse below 20)')+meter('Money earned',m,100,'var(--sun)',' of 100 needed')+(e?'<p class="say" style="border-color:var(--red)">'+e[0]+'</p>':'')+'<p>'+msg+'</p><div class="choices"></div>';
+ [['Fish less','Small catch. The fish recover.',0.1],['Fish normally','Medium catch. Balanced.',0.2],['Fish a lot','Big catch now. Big risk later.',0.4]].forEach(function(o){var b=mk('button','pick',o[0]+'<small>'+o[1]+'</small>');b.onclick=function(){play(o[2],o[0])};h.querySelector('.choices').appendChild(b)})}
+function play(f,name){var e=EV[y],c=f*s,gr=R*s*(1-s/K)*(e?e[1]:1);m+=c;s=Math.max(0,s+gr-c+(e?e[2]:0));
+ msg='You chose "'+name.toLowerCase()+'" and caught '+Math.round(c)+'.';y++;
+ if(s<20)return finish('lose','Collapse!','There are too few fish to breed. The boats stay in port and the town loses its main food and income. This is what overfishing looks like.');
+ if(y>10){if(m<100)return finish('lose','Poverty','The fish are fine, but you fished too little for families to live on. Sustainable does not mean zero. It means the most you can take year after year (the maximum sustainable yield).');
+  if(s<40)return finish('mid','Close call','The town survived, but the stock is low and one bad year could finish it. Try fishing a little less next time.');
+  return finish('win','Victory!','Healthy fish and a living town. You found the balance: take what the sea can replace.')}
+ draw()}
+function finish(k,t,x){$('#g').innerHTML=meter('Fish in the sea',s,100,'var(--aqua)','')+meter('Money earned',m,100,'var(--sun)',' of 100 needed')+'<div class="end '+k+'"><h3>'+t+'</h3><p>'+x+'</p></div><div class="aloud"><span class="tag">Say it out loud</span><p>What would make this harder in real life? Think quotas, bycatch, other boats, climate.</p></div><button class="btn" id="again">Play again</button>';$('#again').onclick=start}
+/* belt */
+var NS='http://www.w3.org/2000/svg';
+function el(n,a,p){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e}
+function items(host,pid,dur,fade){var cols=['#3F6BFF','#12C8BA','#FF8A65','#FFC83D'];for(var i=0;i<4;i++){var g=el('g',{},host),b='-'+(i*dur/4)+'s';el('rect',{x:-8,y:-8,width:16,height:16,rx:4,fill:cols[i]},g);var am=el('animateMotion',{dur:dur+'s',begin:b,repeatCount:'indefinite'},g);el('mpath',{href:'#'+pid},am);if(fade)el('animate',{attributeName:'opacity',values:'1;1;0',keyTimes:'0;.88;1',dur:dur+'s',begin:b,repeatCount:'indefinite'},g)}}
+items($('#lG'),'pL',8,true);items($('#cG'),'pC',12,false);
+/* lab */
+var lt=document.querySelectorAll('#labT .pick');
+lt.forEach(function(b){b.onclick=function(){lt.forEach(function(x){x.setAttribute('aria-pressed',x===b)});['f','e','c'].forEach(function(k){$('#l'+k).hidden=(k!==b.getAttribute('data-l'))})}});
+var FD=[[40,30,95],[190,50,85],[330,25,75],[470,45,60],[100,115,45],[290,130,35],[450,110,25]],buf=false;
+var FS=FD.map(function(d){var u=el('use',{href:'#fish',x:d[0],y:d[1],width:40,height:21,fill:'#FFC83D'},$('#fzf'));u.style.transition='opacity .6s';return u});
+function fz(){var raw=+$('#fz').value,v=raw*(buf?0.6:1),n=0;$('#fzv').textContent=raw+'%';$('#fza').style.opacity=Math.min(.9,v/100);$('#fzd').style.opacity=v/100*.7;FS.forEach(function(u,i){var on=v<=FD[i][2];u.style.opacity=on?1:0;if(on)n++});$('#fzt').textContent=(v<30?'Healthy water.':v<65?'Algae bloom. When it rots it uses up the oxygen near the bottom.':v<85?'Low oxygen. Fish leave and the catch drops.':'A dead zone. Almost nothing can live here.')+' Fish left: '+n+' of '+FS.length+'.'}
+$('#fz').oninput=fz;$('#fzb').onclick=function(){buf=!buf;this.setAttribute('aria-pressed',buf);fz()};fz();
+function ew(){var L=+$('#ewlife').value,R=+$('#ewrec').value,made=62*3/L,dump=made*(1-R/100);$('#ewl').textContent=L+(L>1?' years':' year');$('#ewr').textContent=R+'%';$('#ewm').style.width=Math.min(100,made/186*100)+'%';$('#ewd').style.width=Math.min(100,dump/186*100)+'%';$('#ewmv').textContent=Math.round(made)+' Mt';$('#ewdv').textContent=Math.round(dump)+' Mt';$('#ewt').textContent=dump<15?'Much better. You both cut the waste and collected most of it.':'A lot is still dumped or burned, often by workers in LEDCs. Try both levers: make things last, and collect and recycle. One alone is not enough.'}
+$('#ewlife').oninput=ew;$('#ewrec').oninput=ew;ew();
+function cl(){var w=+$('#cw').value,a=+$('#ca').value,m=w/4*40,l=w/4*100*(1-a/100*0.6);$('#cwv').textContent='+'+w+' C';$('#cav').textContent=a+'%';$('#chm').textContent=Math.round(m);$('#chl').textContent=Math.round(l);$('#chmb').style.width=m+'%';$('#chlb').style.width=l+'%';$('#cct').textContent=a<40?'Same warming, much heavier harm for LEDCs: less money, weaker defences. This is the ecological debt.':'Adaptation money lowers the harm in LEDCs. MEDCs caused most emissions, so paying is a way to repay the debt.'}
+$('#cw').oninput=cl;$('#ca').oninput=cl;cl();
+/* main game */
+(function(){
+var NM=['Ocean health','Income','Community trust'],CL=['var(--aqua)','var(--sun)','#7FB8FF'],h=$('#g'),v,r;
+var RD=[
+{t:'A processing company offers to build a factory in town.',o:[['Accept the factory',[-10,20,-5],.3,'The factory wants more fish than the sea can replace.',[-20,10,-10]],['Accept only if it buys sustainably caught fish',[0,8,5],.2,'Checking costs money and the company walks away.',[0,-8,-5]],['Say no and build local fish markets',[5,-5,10],.2,'Few customers show up at first.',[0,-10,0]]]},
+{t:'Catches are falling. Boats come back with less every month.',o:[['Buy bigger boats with finer nets',[-15,15,0],.4,'The fine nets catch young fish and bycatch.',[-25,0,-10]],['Close the nursery area for a season',[15,-10,-5],.3,'Some boats ignore the ban and fishers get angry.',[5,-15,-15]],['Pay a science team to survey the stock',[5,-5,5],.1,'The results arrive late and mean little.',[0,-8,0]]]},
+{t:'Heavy rain. Fertilizer from upstream farms is flowing toward your coast.',o:[['Talk to farmers about planting buffer strips',[5,-3,10],.4,'Farmers say no and the algae bloom anyway.',[-10,-3,-5]],['Build a water-treatment plant',[10,-15,5],.2,'It costs far more than planned.',[0,-20,0]],['Do nothing and hope',[-15,5,-10],.35,'Lucky: the wind pushes the algae out to sea.',[0,0,0]]]},
+{t:'Tourists want to see dolphins and clean beaches.',o:[['Launch dolphin-watching boats',[5,12,5],.3,'Too many boats stress the dolphins and visitors complain.',[-10,5,-5]],['Plastic clean-up and a recycling scheme',[8,-5,12],.2,'Without rules for producers, little changes.',[2,-5,5]],['Sell beachfront land to a hotel chain',[-10,25,-15],.4,'The hotel dumps waste and locals protest.',[-20,10,-25]]]},
+{t:'Foreign trawlers are fishing just outside your waters.',o:[['Sign a regional quota agreement',[10,-8,5],.3,'Other countries break it.',[0,-10,-5]],['Pay for patrol boats',[8,-12,5],.2,'The patrols find nothing and cost a lot.',[0,-12,0]],['Race them: fish harder',[-20,20,-5],.4,'A huge catch, then the stock crashes.',[-30,25,-5]]]},
+{t:'An El Nino year: a natural warming of the Pacific changes ocean currents and can cut the plankton that fish feed on.',o:[['Ask MEDCs for climate finance',[0,15,5],.5,'The money arrives very slowly.',[0,3,-5]],['Fish more to cover costs',[-15,12,-5],.3,'The stock was already weak and falls further.',[-25,5,-10]],['Retrain fishers for tourism and aquaculture',[5,-8,10],.3,'Many fishers refuse to change.',[0,-12,0]]]}];
+var EV=[['A storm damages boats.',[-3,-10,0]],['A viral video makes your sustainably caught fish famous.',[3,12,8]],['An algae bloom spreads along the coast.',[-12,0,0]],['Fishers strike over prices.',[0,-8,-10]]];
+var DEF=['Collapse! The ocean is empty. Without fish the boats stay in port and the whole town suffers.','Bankrupt! The town ran out of money. Families leave and the fishing community disappears.','Revolt! The community lost trust. People ignore the rules, illegal fishing spreads and the sea suffers anyway.'];
+function bars(d){return NM.map(function(n,i){var x=Math.max(0,Math.min(100,v[i]));return '<div class="meter"><div class="l"><span>'+n+'</span><span>'+Math.round(v[i])+(d?'  ('+(d[i]>0?'+':'')+Math.round(d[i])+')':'')+'</span></div><div class="track"><div class="fill" style="width:'+x+'%;background:'+CL[i]+'"></div></div></div>'}).join('')}
+function begin(){v=[60,60,60];r=0;show()}
+function show(){var q=RD[r];h.innerHTML='<p class="tag">Season '+(r+1)+' of '+RD.length+'</p>'+bars()+'<p class="say">'+q.t+'</p><div class="choices"></div>';q.o.forEach(function(o){var b=mk('button','pick',o[0]+'<small>'+(o[2]>=.35?'Risky bet':'Fairly safe')+'</small>');b.onclick=function(){choose(o)};h.querySelector('.choices').appendChild(b)})}
+function choose(o){var alt=Math.random()<o[2],d=(alt?o[4]:o[1]).slice(),tx=alt?'Surprise! '+o[3]:'It went more or less as planned.',ev=Math.random()<.3?EV[Math.floor(Math.random()*EV.length)]:null,i;
+if(ev){tx+=' Then, out of nowhere: '+ev[0];ev[1].forEach(function(x,j){d[j]+=x})}
+for(i=0;i<3;i++)v[i]+=d[i];r++;var dead=v.findIndex(function(x){return x<=0});
+if(dead>-1)return end('lose','Defeat',DEF[dead]);
+if(r>=RD.length){var mn=Math.min.apply(null,v);return mn>=50?end('win','Victory!','Healthy ocean, a living economy and a united town. You balanced all three, and nobody told you how.'):end('mid','You survived','The town is still standing, but your weakest area is fragile. One more bad season could break it.')}
+h.innerHTML=bars(d)+'<p class="say">'+tx+'</p><button class="btn" id="nx">Next season</button>';$('#nx').onclick=show}
+function end(k,t,x){h.innerHTML=bars()+'<div class="end '+k+'"><h3>'+t+'</h3><p>'+x+'</p></div><div class="aloud"><span class="tag">Say it out loud</span><p>Which choice surprised you most? Would you take the same risk with a real town?</p></div><button class="btn" id="again">Play again</button>';$('#again').onclick=begin}
+begin();
+})();
+/* votes + rubrics */
+var V=['The shrimp challenge','Who eats whom','Run the fishery','The big ideas'],vc=[0,0,0,0];
+function dV(){var h=$('#votes'),t=vc.reduce(function(a,b){return a+b},0);h.innerHTML='';V.forEach(function(n,i){var r=mk('div','vote','<span class="n"></span>');var b=mk('button','pick',n);b.onclick=function(){vc[i]++;dV()};var c=mk('strong','',vc[i]);var tr=mk('div','track','<div class="fill" style="width:'+(t?vc[i]/t*100:0)+'%;background:var(--aqua)"></div>');r.innerHTML='';r.appendChild(b);r.appendChild(c);r.appendChild(tr);h.appendChild(r)})}dV();
+function rub(id,rows,hd,vals,tid,max){var tb=$(id),h='<thead><tr><th>Criterion</th>'+hd.map(function(x){return'<th>'+x+'</th>'}).join('')+'</tr></thead><tbody>';rows.forEach(function(r,i){h+='<tr><td>'+r+'</td>'+vals.map(function(v){return'<td><input type="radio" name="'+id+i+'" value="'+v+'" aria-label="'+r+': '+v+'"></td>'}).join('')+'</tr>'});tb.innerHTML=h+'</tbody>';
+ tb.onchange=function(){var t=0,n=0;rows.forEach(function(r,i){var x=tb.querySelector('input[name="'+id+i+'"]:checked');if(x){t+=+x.value;n++}});$(tid).textContent='Total: '+t+' / '+max+(n<rows.length?' ('+n+' of '+rows.length+' rated)':'')}}
+rub('#rs',['I understood the topic','I could connect the ideas','It was clear and fun','I learned something new'],[1,2,3,4],[1,2,3,4],'#ts',16);
+rub('#rt',['Clear for the age group','Participation and interaction','Accuracy of content','Design and organisation','Command of the topic'],['Excellent (4)','Good (3)','Developing (2)','Weak (1)'],[4,3,2,1],'#tt',20);
+})();
+</script></body></html>
